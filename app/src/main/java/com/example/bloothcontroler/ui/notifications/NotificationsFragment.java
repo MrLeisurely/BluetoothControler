@@ -41,6 +41,7 @@ public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private String[] titles = new String[]{"PV1", "PV2", "PV3", "PV4"};
+    private int currentIndex = 0;
     private List<Fragment> fragmentList = new ArrayList<>();
     private FragmentNotificationsBinding binding;
 
@@ -56,7 +57,7 @@ public class NotificationsFragment extends Fragment {
                 handleMessage(s);
             }
         });
-
+        notificationsViewModel.startCover(OrderCreater.generalReadOrder(OrderCreater.Voc_of_String, 6),2000);
 //        notificationsViewModel.startCover(OrderCreater.setDefault(),3000);
         return binding.getRoot();
     }
@@ -109,8 +110,18 @@ public class NotificationsFragment extends Fragment {
                 }
             }
         });
-        for (String title : titles) {
-            fragmentList.add(LineChartFragment.getInstance(title));
+        for (int i = 0; i < titles.length;i++) {
+            int index = DataMessage.RECEVED_IV_PV1_DATA;
+            if (i==0){
+                index = DataMessage.RECEVED_IV_PV1_DATA;
+            } else if (i == 1){
+                index = DataMessage.RECEVED_IV_PV2_DATA;
+            }else if (i == 2){
+                index = DataMessage.RECEVED_IV_PV3_DATA;
+            }else if (i == 3){
+                index = DataMessage.RECEVED_IV_PV4_DATA;
+            }
+            fragmentList.add(LineChartFragment.getInstance(titles[i],index));
         }
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getContext(), fragmentList, getChildFragmentManager());
         binding.viewPager.setAdapter(pagerAdapter);
@@ -119,8 +130,28 @@ public class NotificationsFragment extends Fragment {
         }
 
         binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout));
-        binding.tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(binding.viewPager));
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                binding.viewPager.setCurrentItem(tab.getPosition());
+                currentIndex = tab.getPosition();
+                notificationsViewModel.sendOrder(OrderCreater.getPVData(tab.getPosition()));
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
     }
+
+
 
     private void showMsg(String msg) {
         if (!TextUtils.isEmpty(msg)) {
@@ -131,7 +162,7 @@ public class NotificationsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         notificationsViewModel.setReady(true);
-        notificationsViewModel.sendOrder(OrderCreater.generalReadOrder(OrderCreater.Voc_of_String, 6));
+        notificationsViewModel.sendOrder(OrderCreater.getPVData(currentIndex));
     }
 
     @Override

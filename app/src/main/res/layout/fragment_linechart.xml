@@ -11,9 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+            <TextView
+                android:id="@+id/tvPmax"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="5dp"
+                android:text="@string/pmax_str"
+                android:textColor="@color/base_black"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tvDiff"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/difference"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/base_black"
+                android:textSize="16sp" />
+        </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -202,6 +202,19 @@ public class OrderCreater {
         else return generalWriteOrder(START_PV4,1,4);
     }
 
+    public static byte[] getPVData(int pos){
+        if (pos == 0){
+            return generalReadOrder(PV1_Pmax_stc,258);
+        }
+        if (pos == 1){
+            return generalReadOrder(PV2_Pmax_stc,258);
+        }
+        if (pos == 2){
+            return generalReadOrder(PV3_Pmax_stc,258);
+        }
+        else return generalReadOrder(PV4_Pmax_stc,258);
+    }
+
     public static byte[] startOrStop(boolean isStart){
         if (isStart){
             return generalWriteOrder(STOP_OR_START,1,1);

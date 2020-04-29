@@ -6,24 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bloothcontroler.R;
 import com.example.bloothcontroler.base.LazyFragment;
+import com.example.bloothcontroler.service.DataMessage;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.ScatterChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.ScatterData;
+import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,12 +44,15 @@ public class LineChartFragment extends LazyFragment {
     private LineChartViewModel viewModel;
 
     private String title;
+    private int index;
     private LineChart lineChart;
     private Button button;
-
-    public static LineChartFragment getInstance(String title) {
+    private TextView tvPmax;
+    private TextView tvDiff;
+    public static LineChartFragment getInstance(String title,int index) {
         Bundle args = new Bundle();
         args.putString("title", title);
+        args.putInt("index",index);
         LineChartFragment fragment = new LineChartFragment();
         fragment.setArguments(args);
         return fragment;
@@ -62,6 +72,7 @@ public class LineChartFragment extends LazyFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             title = getArguments().getString("title", "");
+            index = getArguments().getInt("index", 0);
         }
     }
 
@@ -72,14 +83,23 @@ public class LineChartFragment extends LazyFragment {
         View root = inflater.inflate(R.layout.fragment_linechart, container, false);
         lineChart = root.findViewById(R.id.line_chart);
         button = root.findViewById(R.id.button);
+        tvPmax = root.findViewById(R.id.tvPmax);
+        tvDiff = root.findViewById(R.id.tvDiff);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addEntry(0, (float) (Math.random() * 10));
-                addEntry(1, (float) ((Math.random()) * 10 + 10));
-                addEntry(2, (float)((Math.random()) * 10 + 10));
-                addEntry(3, (float) ((Math.random()) * 10 + 10));
-                notifyData();
+//                addEntry(0, (float) (Math.random() * 10));
+//                addEntry(1, (float) ((Math.random()) * 10 + 10));
+//                addEntry(2, (float)((Math.random()) * 10 + 10));
+//                addEntry(3, (float) ((Math.random()) * 10 + 10));
+//                notifyData();
+                addTestData();
+            }
+        });
+        viewModel.getText().observe(this, new Observer<DataMessage>() {
+            @Override
+            public void onChanged(@Nullable DataMessage s) {
+                handleMessage(s);
             }
         });
         initChart();
@@ -87,6 +107,16 @@ public class LineChartFragment extends LazyFragment {
         return root;
     }
 
+    private void handleMessage(DataMessage message) {
+        if (null != message) {
+            if (message.what == index) {
+                    int[] data = message.getData();
+                    tvPmax.setText(getString(R.string.pmax_str,viewModel.getValue(data[0])));
+                    tvDiff.setText(getString(R.string.difference,viewModel.getValue(data[1])+ "%") );
+                    setPVData(data);
+            }
+        }
+    }
 
     private void initChart() {
         //设置描述文本不显示
@@ -115,6 +145,7 @@ public class LineChartFragment extends LazyFragment {
         YAxis leftAxis = lineChart.getAxisLeft();
         //保证Y轴从0开始，不然会上移一点
         leftAxis.setAxisMinimum(0f);
+//        leftAxis.setAxisMaximum(5f);
         //设置图表左边的y轴禁用
         leftAxis.setEnabled(true);
 
@@ -129,6 +160,7 @@ public class LineChartFragment extends LazyFragment {
         xAxis.setTextColor(Color.parseColor("#333333"));
         xAxis.setTextSize(11f);
         xAxis.setAxisMinimum(0f);
+//        xAxis.setAxisMaximum(110f);
         //是否绘制轴线
         xAxis.setDrawAxisLine(false);
         //设置x轴上每个点对应的线
@@ -159,10 +191,27 @@ public class LineChartFragment extends LazyFragment {
      */
     private void addLineDataSet() {
         LineData mLineData = new LineData();
-        mLineData.addDataSet(createLineDataSet("one", Color.RED));
-        mLineData.addDataSet(createLineDataSet("two", Color.YELLOW));
-        mLineData.addDataSet(createLineDataSet("three", Color.BLUE));
-        mLineData.addDataSet(createLineDataSet("four", Color.GREEN));
+//        int color;
+//        switch (index){
+//            case 0:
+//                color = Color.RED;
+//                break;
+//            case 1:
+//                color = Color.YELLOW;
+//                break;
+//            case 2:
+//                color = Color.BLUE;
+//                break;
+//            case 3:
+//                color = Color.GREEN;
+//                break;
+//            default:
+//                color = Color.RED;
+//        }
+        mLineData.addDataSet(createLineDataSet(title, Color.RED));
+//        mLineData.addDataSet(createLineDataSet("two", Color.YELLOW));
+//        mLineData.addDataSet(createLineDataSet("three", Color.BLUE));
+//        mLineData.addDataSet(createLineDataSet("four", Color.GREEN));
         lineChart.setData(mLineData);
     }
 
@@ -191,12 +240,87 @@ public class LineChartFragment extends LazyFragment {
      * @param y y坐标
      */
     private void addEntry(int index, float y) {
+//        LineData data = lineChart.getData();
+//        if (data != null) {
+//            ILineDataSet set = data.getDataSetByIndex(index);
+//            if (set != null) {
+//                data.addEntry(new Entry(set.getEntryCount(), y), index);
+//            }
+//        }
+    }
+
+    private void addTestData(){
+        LineData data = lineChart.getData();
+        List<Entry> entries = new ArrayList<>();
+        int datasize = 128;
+        float[] xs = new float[datasize];
+        List<Float> ys = new ArrayList<>();
+        if (data != null) {
+            for (int i = 0;i < datasize;i++){
+                xs[i] = ((float) (Math.random() * 110));
+                ys.add((float) (Math.random() * 5));
+            }
+            Arrays.sort(xs);
+            for (int i = 0;i < datasize ;i++){
+                entries.add(new Entry(xs[i],ys.get(i)));
+            }
+            LineDataSet lineDataSet = new LineDataSet(entries, title);
+            lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+            lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            lineDataSet.setFillColor(Color.RED);
+            lineDataSet.setColor(Color.RED);
+            lineDataSet.setFillAlpha(50);
+            lineDataSet.setLineWidth(1.5f);
+            lineDataSet.setDrawCircles(false);
+            lineDataSet.setDrawValues(true);
+            data.getDataSets().set(0,lineDataSet);
+            notifyData();
+        }
+    }
+
+    private void setPVData(int[] pvData){
         LineData data = lineChart.getData();
         if (data != null) {
-            ILineDataSet set = data.getDataSetByIndex(index);
-            if (set != null) {
-                data.addEntry(new Entry(set.getEntryCount(), y), index);
+            if (pvData.length >= 4){
+                List<Entry> entries = new ArrayList<>();
+//                int datasize = 128;
+                int datasize = (pvData.length - 2) / 2;
+                int[] xs = new int[datasize];
+                int[] ys = new int[datasize];
+                System.arraycopy(pvData, 2, xs, 0, datasize);
+                System.arraycopy(pvData, 2 + datasize, ys, 0, datasize);
+
+                for (int i = 0;i < datasize ;i++){
+                    for (int j = i + 1 ; j < datasize ; j ++){
+                        if (xs[j] < xs[i]){
+                            int c = xs[j];
+                            xs[j] = xs[i];
+                            xs[i] = c;
+
+                            int cy = ys[j];
+                            ys[j] = ys[i];
+                            ys[i] = cy;
+                        }
+                    }
+                }
+
+                for (int i = 0;i < datasize ;i++){
+                    entries.add(new Entry((float) viewModel.getValue(xs[i]),(float)viewModel.getValue(ys[i])));
+                }
+
+                LineDataSet lineDataSet = new LineDataSet(entries, title);
+                lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
+                lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+                lineDataSet.setFillColor(Color.RED);
+                lineDataSet.setColor(Color.RED);
+                lineDataSet.setFillAlpha(50);
+                lineDataSet.setLineWidth(1.5f);
+                lineDataSet.setDrawCircles(false);
+                lineDataSet.setDrawValues(true);
+                data.getDataSets().set(0,lineDataSet);
+                notifyData();
             }
+
         }
     }
 
@@ -206,7 +330,7 @@ public class LineChartFragment extends LazyFragment {
         // let the chart know it's data has changed
         lineChart.notifyDataSetChanged();
         //x轴显示最大个数
-        lineChart.setVisibleXRangeMaximum(10);
+        lineChart.setVisibleXRangeMaximum(128);
         // move to the latest entry
         lineChart.moveViewToAnimated(data.getEntryCount(), 0, YAxis.AxisDependency.RIGHT, 0);
     }

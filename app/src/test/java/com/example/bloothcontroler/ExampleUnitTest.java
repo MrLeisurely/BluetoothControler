@@ -70,6 +70,86 @@ public class ExampleUnitTest {
 //        System.out.println(b.doubleValue() + "%");
         System.out.println(Arrays.toString(OrderCreater.getWriteDataOrder(OrderCreater.Pamx,2,12,-23)));
     }
+    @Test
+    public void test3(){
+        byte[] order = OrderCreater.getPVData(2);
+        int lastAddress = 0;
+        if (order.length > 4){
+            int high = (order[2] & 0xFF) << 8;
+            int low = order[3];
+            lastAddress = high + low;
+        }
+        System.out.println(Arrays.toString(order));
+        System.out.println(lastAddress);
+    }
+
+
+    @Test
+    public void test2(){
+        int datasize = 3;
+//        int[] xs = created(datasize,true);
+//        int[] ys = created(datasize,false);
+
+        int[] pvData = created3(datasize);
+
+        int cdataSize = (pvData.length - 2) / 2;
+
+        int[] xs = new int[cdataSize];
+        int[] ys = new int[cdataSize];
+        System.arraycopy(pvData, 2, xs, 0, cdataSize);
+        System.arraycopy(pvData, 2 + cdataSize, ys, 0, cdataSize);
+        System.out.println(Arrays.toString(xs));
+        System.out.println(Arrays.toString(ys));
+        for (int i = 0;i < cdataSize ;i++){
+            for (int j = i + 1 ; j < cdataSize ; j ++){
+                if (xs[j] < xs[i]){
+                    int c = xs[j];
+                    xs[j] = xs[i];
+                    xs[i] = c;
+
+                    int cy = ys[j];
+                    ys[j] = ys[i];
+                    ys[i] = cy;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(xs));
+        System.out.println(Arrays.toString(ys));
+
+    }
+
+    private int[] created3(int datanum){
+        int[] order = new int[2 + 2 * datanum];
+
+        order[0] = 120;
+        order[1] = 121;
+//        order[2 + 2 * datanum] = 998;
+//        order[2 + 2 * datanum + 1] = 999;
+        for (int i = 0;i< datanum;i++){
+            int num1;
+            num1 = (int) (100 * Math.random());
+
+            order[i + 2] = num1;
+            order[i + datanum + 2] = i;
+        }
+        System.out.println(Arrays.toString(order));
+        return order;
+    }
+
+    private int[] created(int datanum,boolean isradom){
+        int[] order = new int[datanum];
+        for (int i = 0;i< datanum;i++){
+            int num1;
+            if (isradom){
+                num1 = (int) (100 * Math.random());
+            } else {
+                num1 = i;
+            }
+            order[i] = num1;
+        }
+        System.out.println(Arrays.toString(order));
+        return order;
+    }
 
     private byte[] create(int datanum){
         byte[] order = new byte[3 + datanum * 2];

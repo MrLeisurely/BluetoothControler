@@ -14,6 +14,10 @@ public class DataMessage {
     public static final int RECEVED_STATUS_DATA = 2;
     public static final int RECEVED_SETTING_DATA = 3;
     public static final int RECEVED_IV_DATA = 4;
+    public static final int RECEVED_IV_PV1_DATA = 5;
+    public static final int RECEVED_IV_PV2_DATA = 6;
+    public static final int RECEVED_IV_PV3_DATA = 7;
+    public static final int RECEVED_IV_PV4_DATA = 8;
 
     public static final int PAGE_STATUS = 5;
     public static final int PAGE_SETTING = 6;

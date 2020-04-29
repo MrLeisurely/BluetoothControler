@@ -159,6 +159,38 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                                 message.what = DataMessage.RECEVED_IV_DATA;
                                 postValue(message);
                             }
+                            else if (lastAddress == OrderCreater.PV1_Pmax_stc){
+                                int datasize = data[2];
+                                byte[] receivedData = new byte[datasize];
+                                System.arraycopy(data, 3, receivedData, 0, datasize);
+                                message.setData(receivedData);
+                                message.what = DataMessage.RECEVED_IV_PV1_DATA;
+                                postValue(message);
+                            }
+                            else if (lastAddress == OrderCreater.PV2_Pmax_stc){
+                                int datasize = data[2];
+                                byte[] receivedData = new byte[datasize];
+                                System.arraycopy(data, 3, receivedData, 0, datasize);
+                                message.setData(receivedData);
+                                message.what = DataMessage.RECEVED_IV_PV2_DATA;
+                                postValue(message);
+                            }
+                            else if (lastAddress == OrderCreater.PV3_Pmax_stc){
+                                int datasize = data[2];
+                                byte[] receivedData = new byte[datasize];
+                                System.arraycopy(data, 3, receivedData, 0, datasize);
+                                message.setData(receivedData);
+                                message.what = DataMessage.RECEVED_IV_PV3_DATA;
+                                postValue(message);
+                            }
+                            else if (lastAddress == OrderCreater.PV4_Pmax_stc){
+                                int datasize = data[2];
+                                byte[] receivedData = new byte[datasize];
+                                System.arraycopy(data, 3, receivedData, 0, datasize);
+                                message.setData(receivedData);
+                                message.what = DataMessage.RECEVED_IV_PV4_DATA;
+                                postValue(message);
+                            }
                         }
                     }
                 } catch (IOException e) {
