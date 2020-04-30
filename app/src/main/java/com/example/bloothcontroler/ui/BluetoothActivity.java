@@ -471,12 +471,14 @@ public class BluetoothActivity extends AppCompatActivity implements View.OnClick
         return super.onOptionsItemSelected(item);
     }
 
+    //        private final String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB";
+    private final String MY_UUID = "0000ffe0-0000-1000-8000-00805f9b34fb";
     /**
      * 作为服务端接收链接
      */
     private class AcceptThread extends Thread {
         private final BluetoothServerSocket mmServerSocket;
-        private final String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB";
+
         public AcceptThread() {
             // Use a temporary object that is later assigned to mmServerSocket
             // because mmServerSocket is final.
@@ -529,7 +531,7 @@ public class BluetoothActivity extends AppCompatActivity implements View.OnClick
     }
 
     private class ConnectThread extends Thread {
-        private final String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB";
+
         private final BluetoothSocket socket;
         private final BluetoothDevice device;
 
