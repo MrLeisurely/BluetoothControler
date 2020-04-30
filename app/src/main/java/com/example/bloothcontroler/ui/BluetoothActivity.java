@@ -44,6 +44,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -78,6 +79,7 @@ public class BluetoothActivity extends AppCompatActivity implements View.OnClick
 
 
     private List<BluetoothDevice> foundDevices;
+    private HashSet<BluetoothDevice> deviceSet;
     private List<BluetoothDevice> matchedDevices;
     private DeviceListAdapter foundAdapter;
     private DeviceListAdapter matchAdapter;
@@ -91,9 +93,11 @@ public class BluetoothActivity extends AppCompatActivity implements View.OnClick
                 // Add the name and address to an array adapter to show  in a ListView
                 if (null != device){
                     Log.w(TAG,"device found : " + device.getName() + " address :" + device.getAddress());
-                    foundDevices.add(device);
-                    foundAdapter.notifyDataSetChanged();
-                    tvFoundNum.setText("可用设备(" + foundDevices.size() + ")");
+                    if (deviceSet.add(device)){
+                        foundDevices.add(device);
+                        foundAdapter.notifyDataSetChanged();
+                        tvFoundNum.setText("可用设备(" + foundDevices.size() + ")");
+                    }
                 }
             }
         }
@@ -157,6 +161,8 @@ public class BluetoothActivity extends AppCompatActivity implements View.OnClick
         rcvFound.setLayoutManager(new LinearLayoutManager(this));
         foundDevices = new ArrayList<>();
         matchedDevices = new ArrayList<>();
+        deviceSet = new HashSet<>();
+
 
         foundAdapter = new DeviceListAdapter(this);
         matchAdapter = new DeviceListAdapter(this);
@@ -227,6 +233,7 @@ public class BluetoothActivity extends AppCompatActivity implements View.OnClick
             bluetoothAdapter.cancelDiscovery();
         } else {
             foundDevices.clear();
+            deviceSet.clear();
             matchedDevices.clear();
             btnScan.setText("停止");
             isSearching = true;
