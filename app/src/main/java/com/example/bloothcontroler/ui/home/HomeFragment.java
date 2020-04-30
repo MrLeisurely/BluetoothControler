@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bloothcontroler.R;
 import com.example.bloothcontroler.databinding.FragmentHomeBinding;
+import com.example.bloothcontroler.le.DeviceScanActivity;
 import com.example.bloothcontroler.service.BluetoothDataIOServer;
 import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.service.OrderCreater;
@@ -189,7 +190,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.txBluetooth:
-                Intent intent = new Intent(getContext(), BluetoothActivity.class);
+//                Intent intent = new Intent(getContext(), BluetoothActivity.class);
+                Intent intent = new Intent(getContext(), DeviceScanActivity.class);
                 startActivity(intent);
                 break;
         }
