@@ -4,17 +4,16 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
-import android.os.Message;
+import android.os.Handler;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
 
 /**
  * @author Hanwenhao
@@ -26,12 +25,14 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     private static final String TAG = BluetoothDataIOServer.class.getSimpleName();
     private boolean isConnected;
     private int pageTag;
-    private int lastAddress;
+    private int lastRegAddress;
+    private int lastOrderAddress;
+    private int lastOrderType;
     public boolean isConnected() {
         return isConnected;
     }
-    public BluetoothGatt mBluetoothGatt;
-    public BluetoothGattCharacteristic mNotifyCharacteristic;
+    private BluetoothGatt mBluetoothGatt;
+    private BluetoothGattCharacteristic mNotifyCharacteristic;
     public void setPageTag(int pageTag){
         this.pageTag = pageTag;
     }
@@ -65,14 +66,23 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
         setConnected(true);
     }
 
+    /**
+     * 处理接受到的数据
+     * @param data
+     */
     public void onDataRecv(byte[] data){
         try {
             DataMessage message = new DataMessage();
             // 校验数据
             if (CRCUtil.checkCRC(data) == 0){
                 Log.w(TAG,"data check ok");
+                int orderAddress = data[0];
+                int orderType = data[1];
+                if (orderAddress != lastOrderAddress || orderType != lastOrderType){
+                    return;
+                }
                 if (pageTag == DataMessage.PAGE_STATUS){
-                    if (lastAddress == OrderCreater.DEVICE_STATUS){
+                    if (lastRegAddress == OrderCreater.DEVICE_STATUS){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -82,7 +92,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     }
                 }
                 else if (pageTag == DataMessage.PAGE_SETTING){
-                    if (lastAddress == OrderCreater.Pamx){
+                    if (lastRegAddress == OrderCreater.Pamx){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -92,7 +102,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     }
                 }
                 else if (pageTag == DataMessage.PAGE_IV){
-                    if (lastAddress == OrderCreater.Voc_of_String){
+                    if (lastRegAddress == OrderCreater.Voc_of_String){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -100,7 +110,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         message.what = DataMessage.RECEVED_IV_DATA;
                         postValue(message);
                     }
-                    else if (lastAddress == OrderCreater.PV1_Pmax_stc){
+                    else if (lastRegAddress == OrderCreater.PV1_Pmax_stc){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -108,7 +118,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         message.what = DataMessage.RECEVED_IV_PV1_DATA;
                         postValue(message);
                     }
-                    else if (lastAddress == OrderCreater.PV2_Pmax_stc){
+                    else if (lastRegAddress == OrderCreater.PV2_Pmax_stc){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -116,7 +126,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         message.what = DataMessage.RECEVED_IV_PV2_DATA;
                         postValue(message);
                     }
-                    else if (lastAddress == OrderCreater.PV3_Pmax_stc){
+                    else if (lastRegAddress == OrderCreater.PV3_Pmax_stc){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -124,7 +134,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         message.what = DataMessage.RECEVED_IV_PV3_DATA;
                         postValue(message);
                     }
-                    else if (lastAddress == OrderCreater.PV4_Pmax_stc){
+                    else if (lastRegAddress == OrderCreater.PV4_Pmax_stc){
                         int datasize = data[2];
                         byte[] receivedData = new byte[datasize];
                         System.arraycopy(data, 3, receivedData, 0, datasize);
@@ -177,12 +187,29 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
         }
     }
 
-    public synchronized void sendOrder(byte[] order){
+    private boolean isDealingOrder;
+    private byte[] cacheOrder;
+
+    /**
+     * 发送控制指令，1秒内只会发送一条，带缓存功能，目前最多缓存一条指令
+     * @param order 待发送指令
+     * @param needCache 标记是否需要缓存此条指令
+     */
+    public synchronized void sendOrder(byte[] order,boolean needCache){
         if (order != null){
+            if (isDealingOrder){
+                if (needCache){
+                    cacheOrder = order;
+                }
+                return;
+            }
+            isDealingOrder = true;
             if (order.length > 4){
                 int high = (order[2] & 0xFF) << 8;
                 int low = order[3];
-                lastAddress = high + low;
+                lastRegAddress = high + low;
+                lastOrderAddress = order[0];
+                lastOrderType = order[1];
             }
             if (bluetoothIOThread != null){
                 bluetoothIOThread.write(order);
@@ -196,10 +223,20 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     Log.d(TAG,"send Data error,"+e.getMessage());
                 }
             }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    isDealingOrder = false;
+                    if (cacheOrder != null){
+                        sendOrder(cacheOrder,true);
+                        cacheOrder = null;
+                    }
+                }
+            },1000);
         }
     }
 
-    public void setConnected(boolean isConnected){
+    private void setConnected(boolean isConnected){
         this.isConnected = isConnected;
         DataMessage message = new DataMessage();
         message.what = DataMessage.CONNECT_STATUS;
@@ -207,6 +244,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     }
 
     private BluetoothIOThread bluetoothIOThread;
+
 
     private class BluetoothIOThread extends Thread {
         private BluetoothSocket socket;

@@ -53,11 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (null != message) {
             switch (message.what) {
                 case DataMessage.CONNECT_STATUS:
-                    if (homeViewModel.isBTConnected()) {
-                        binding.txBluetooth.setText(getString(R.string.app_status_connected));
-                    } else {
-                        binding.txBluetooth.setText(getString(R.string.app_status_unconnected));
-                    }
+                    setConnectStatus();
                     break;
                 case DataMessage.RECEVED_STATUS_DATA:
                     int[] data = message.getData();
@@ -85,6 +81,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void setConnectStatus(){
+        if (homeViewModel.isBTConnected()) {
+            binding.txBluetooth.setText(getString(R.string.app_status_connected));
+        } else {
+            binding.txBluetooth.setText(getString(R.string.app_status_unconnected));
+        }
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -97,6 +101,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onResume();
         Log.w(TAG,"onResume");
         homeViewModel.setReady(true);
+        setConnectStatus();
     }
 
     private void setPVStatus(TextView pv, int status){

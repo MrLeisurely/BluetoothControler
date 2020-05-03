@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.example.bloothcontroler.service.BluetoothDataIOServer;
 import com.example.bloothcontroler.service.DataMessage;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        CrashReport.initCrashReport(this,"0d554cdaf6",true);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        BluetoothDataIOServer.getInstance().setPageTag(DataMessage.PAGE_STATUS);
         NavigationUI.setupWithNavController(navView, navController);
         //test create
     }

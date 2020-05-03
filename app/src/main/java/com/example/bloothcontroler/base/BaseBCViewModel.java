@@ -35,9 +35,23 @@ public abstract class BaseBCViewModel extends ViewModel {
         return mText;
     }
 
+    /**
+     * 一般指令，指用户手动发出，默认缓存
+     * @param order
+     */
     public void sendOrder(byte[] order){
         if (null != mText){
-            mText.sendOrder(order);
+            mText.sendOrder(order,true);
+        }
+    }
+
+    /**
+     * 轮询指令，默认不缓存
+     * @param order
+     */
+    public void sendUnCacheOrder(byte[] order){
+        if (null != mText){
+            mText.sendOrder(order,false);
         }
     }
 
@@ -48,7 +62,7 @@ public abstract class BaseBCViewModel extends ViewModel {
 //                    && isBTConnected()
             ){
                 Log.w(TAG,"sendCover:" + Arrays.toString(order));
-                sendOrder(order);
+                sendUnCacheOrder(order);
             }
         }
     };

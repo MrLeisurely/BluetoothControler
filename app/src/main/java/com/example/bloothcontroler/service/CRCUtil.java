@@ -24,7 +24,7 @@ public class CRCUtil {
             }
         }
         //高低位转换，看情况使用
-        //CRC = ( (CRC & 0x0000FF00) >> 8) | ( (CRC & 0x000000FF ) << 8);
+        CRC = ( (CRC & 0x0000FF00) >> 8) | ( (CRC & 0x000000FF ) << 8);
         return CRC;
     }
 
@@ -55,6 +55,7 @@ public class CRCUtil {
                     }
                 }
             }
+            CRC = ( (CRC & 0x0000FF00) >> 8) | ( (CRC & 0x000000FF ) << 8);
             return CRC - datacrc;
         }
     }
