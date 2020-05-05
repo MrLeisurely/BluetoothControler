@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -14,6 +15,8 @@ import com.tencent.bugly.crashreport.CrashReport;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * @author Hanwenhao
@@ -197,12 +200,14 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
      */
     public synchronized void sendOrder(byte[] order,boolean needCache){
         if (order != null){
+            Log.d(TAG,"sendOrder,isDealingOrder = "+isDealingOrder);
             if (isDealingOrder){
                 if (needCache){
                     cacheOrder = order;
                 }
                 return;
             }
+            Log.d(TAG,"order = "+ Arrays.toString(order));
             isDealingOrder = true;
             if (order.length > 4){
                 int high = (order[2] & 0xFF) << 8;
@@ -223,16 +228,23 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     Log.d(TAG,"send Data error,"+e.getMessage());
                 }
             }
-            new Handler().postDelayed(new Runnable() {
+
+            new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     isDealingOrder = false;
                     if (cacheOrder != null){
                         sendOrder(cacheOrder,true);
                         cacheOrder = null;
                     }
                 }
-            },1000);
+            }).start();
+
         }
     }
 
