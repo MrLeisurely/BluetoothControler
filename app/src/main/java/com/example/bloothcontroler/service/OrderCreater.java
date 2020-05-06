@@ -1,5 +1,7 @@
 package com.example.bloothcontroler.service;
 
+import java.util.Calendar;
+
 /**
  * @author Hanwenhao
  * @date 2020/4/10
@@ -95,6 +97,8 @@ public class OrderCreater {
     public static final int PV4_128IVP_I = 60783;
     public static final int PV4_128IVP_V = 60911;
 
+    public static final int SET_TIME = 63000;
+
 
     /**
      * 添加校验位
@@ -185,21 +189,32 @@ public class OrderCreater {
         return getOrder(order);
     }
 
+    public static byte[] setTimeOrder(){
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int min = calendar.get(Calendar.MINUTE);
+        int sec = calendar.get(Calendar.SECOND);
+        return getWriteDataOrder(SET_TIME,6,year,month,day,hour,min,sec);
+    }
+
     public static byte[] setDefault(){
-        return generalWriteOrder(DEFAULT,1,1);
+        return getWriteDataOrder(DEFAULT,1,1);
     }
 
     public static byte[] startCircle(int pos){
         if (pos == 0){
-            return generalWriteOrder(START_PV1,1,1);
+            return getWriteDataOrder(START_PV1,1,1);
         }
         if (pos == 1){
-            return generalWriteOrder(START_PV2,1,2);
+            return getWriteDataOrder(START_PV2,1,2);
         }
         if (pos == 2){
-            return generalWriteOrder(START_PV3,1,3);
+            return getWriteDataOrder(START_PV3,1,3);
         }
-        else return generalWriteOrder(START_PV4,1,4);
+        else return getWriteDataOrder(START_PV4,1,4);
     }
 
     public static byte[] getPVData(int pos){
@@ -217,9 +232,9 @@ public class OrderCreater {
 
     public static byte[] startOrStop(boolean isStart){
         if (isStart){
-            return generalWriteOrder(STOP_OR_START,1,1);
+            return getWriteDataOrder(STOP_OR_START,1,1);
         } else {
-            return generalWriteOrder(STOP_OR_START,1,2);
+            return getWriteDataOrder(STOP_OR_START,1,2);
         }
     }
 

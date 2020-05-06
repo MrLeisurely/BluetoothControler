@@ -26,6 +26,7 @@ import com.example.bloothcontroler.service.BluetoothDataIOServer;
 import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.service.OrderCreater;
 import com.example.bloothcontroler.ui.BluetoothActivity;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -102,6 +103,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Log.w(TAG,"onResume");
         homeViewModel.setReady(true);
         setConnectStatus();
+        if (!homeViewModel.isSetTimeOK()){
+            homeViewModel.sendOrder(OrderCreater.setTimeOrder());
+        }
     }
 
     private void setPVStatus(TextView pv, int status){

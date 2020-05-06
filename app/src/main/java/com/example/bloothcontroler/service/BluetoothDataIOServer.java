@@ -31,8 +31,12 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     private int lastRegAddress;
     private int lastOrderAddress;
     private int lastOrderType;
+    private boolean setTimeOK;
     public boolean isConnected() {
         return isConnected;
+    }
+    public boolean isSetTimeOK(){
+        return setTimeOK;
     }
     private BluetoothGatt mBluetoothGatt;
     private BluetoothGattCharacteristic mNotifyCharacteristic;
@@ -92,6 +96,9 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         message.setData(receivedData);
                         message.what = DataMessage.RECEVED_STATUS_DATA;
                         postValue(message);
+                    }
+                    else if (lastRegAddress == OrderCreater.SET_TIME){
+                        setTimeOK = true;
                     }
                 }
                 else if (pageTag == DataMessage.PAGE_SETTING){

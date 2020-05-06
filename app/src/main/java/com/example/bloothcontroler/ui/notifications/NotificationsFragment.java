@@ -57,7 +57,7 @@ public class NotificationsFragment extends Fragment {
                 handleMessage(s);
             }
         });
-        notificationsViewModel.startCover(OrderCreater.generalReadOrder(OrderCreater.Voc_of_String, 6),2000);
+//        notificationsViewModel.startCover(OrderCreater.generalReadOrder(OrderCreater.Voc_of_String, 6),2000);
 //        notificationsViewModel.startCover(OrderCreater.setDefault(),3000);
         return binding.getRoot();
     }
@@ -107,6 +107,14 @@ public class NotificationsFragment extends Fragment {
                             i
                     );
                     notificationsViewModel.sendOrder(editOrder);
+                }
+            }
+        });
+        binding.imgRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (notificationsViewModel.isBTConnected()){
+                    notificationsViewModel.sendOrder(OrderCreater.generalReadOrder(OrderCreater.Voc_of_String, 6));
                 }
             }
         });

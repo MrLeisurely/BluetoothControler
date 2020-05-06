@@ -17,6 +17,7 @@
     <string name="app_status_remark">Remark</string>
     <string name="app_status_recover_rules">Recovery Rules：</string>
     <string name="app_status_default">Default</string>
+    <string name="app_device_hint">Please Connect Device First!</string>
 
     <string name="action_settings">Settings</string>
 

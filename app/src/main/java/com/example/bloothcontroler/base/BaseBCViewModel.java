@@ -26,7 +26,9 @@ public abstract class BaseBCViewModel extends ViewModel {
     public boolean isBTConnected (){
         return mText.isConnected();
     }
-
+    public boolean isSetTimeOK (){
+        return mText.isSetTimeOK();
+    }
     protected BaseBCViewModel(){
         mText = BluetoothDataIOServer.getInstance();
     }
@@ -59,7 +61,8 @@ public abstract class BaseBCViewModel extends ViewModel {
         @Override
         public void run() {
             if (isReadyToSend && order.length > 0
-//                    && isBTConnected()
+                    && isBTConnected()
+                    && isSetTimeOK()
             ){
                 Log.w(TAG,"sendCover:" + Arrays.toString(order));
                 sendUnCacheOrder(order);

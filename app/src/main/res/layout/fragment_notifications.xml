@@ -81,116 +81,137 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="Voc of String"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvVoc"
-                            android:layout_width="0dp"
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="Voc of String"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/tvVoc"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="2"
+                                    android:gravity="start|center_vertical"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:text="V"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="Irradiation"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/tvIrr"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="2"
+                                    android:gravity="start|center_vertical"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:text="W/m2"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="Temperation"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/tvTemp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center_vertical"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:layout_weight="2"
+                                    android:gravity="start|center_vertical"
+                                    android:maxLength="30"
+                                    android:maxLines="1"
+                                    android:text="℃"
+                                    android:textColor="@color/base_black"
+                                    android:textSize="16sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imgRefresh"
+                            android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:gravity="start|center_vertical"
-                            android:maxLength="30"
-                            android:maxLines="1"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="2"
-                            android:gravity="start|center_vertical"
-                            android:maxLength="30"
-                            android:maxLines="1"
-                            android:text="V"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="Irradiation"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/tvIrr"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:gravity="start|center_vertical"
-                            android:maxLength="30"
-                            android:maxLines="1"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="2"
-                            android:gravity="start|center_vertical"
-                            android:maxLength="30"
-                            android:maxLines="1"
-                            android:text="W/m2"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="Temperation"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/tvTemp"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="1"
-                            android:gravity="start|center_vertical"
-                            android:maxLength="30"
-                            android:maxLines="1"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_weight="2"
-                            android:gravity="start|center_vertical"
-                            android:maxLength="30"
-                            android:maxLines="1"
-                            android:text="℃"
-                            android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
+                            android:layout_gravity="center_vertical|end"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/app_shape_black_btn_bg"
+                            android:src="@drawable/ic_refresh_black_24dp" />
+                    </FrameLayout>
 
                     <FrameLayout
                         android:layout_width="match_parent"

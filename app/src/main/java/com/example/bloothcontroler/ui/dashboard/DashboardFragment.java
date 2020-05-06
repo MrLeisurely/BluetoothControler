@@ -138,10 +138,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             int p = (int) (pamx * 10);
             int v = (int) (vmp * 10);
             int i = (int) (imp * 10);
-            if (p * 10 !=  v * i){
-                showMsg("Pamx != Vmp * Imp,请检查输入数据");
-                return false;
-            }
+//            if (p * 10 !=  v * i){
+//                showMsg("Pamx != Vmp * Imp,请检查输入数据");
+//                return false;
+//            }
             if (voc > 110 || voc < -110){
                 showMsg("Voc 取值为 +-110V");
                 return false;

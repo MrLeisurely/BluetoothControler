@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         if (server.isConnected()){
                             server.setPageTag(DataMessage.PAGE_SETTING);
                         } else {
-                            showMsg("请先连接设备");
+                            showMsg(getString(R.string.app_device_hint));
                         }
                         break;
                     case R.id.navigation_notifications:
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         if (server.isConnected()){
                             server.setPageTag(DataMessage.PAGE_IV);
                         } else {
-                            showMsg("请先连接设备");
+                            showMsg(getString(R.string.app_device_hint));
                         }
                         break;
                     case R.id.navigation_more:

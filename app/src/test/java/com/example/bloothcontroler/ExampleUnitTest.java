@@ -53,22 +53,24 @@ public class ExampleUnitTest {
 //        order[5] = highRN;
 //        order[6] = lowRN;
 
-        byte[] data = create(17);
+        byte[] data = OrderCreater.getWriteDataOrder(OrderCreater.DEFAULT,1,1);
         System.out.println(Arrays.toString(data));
+        byte[] data1 = OrderCreater.setTimeOrder();
+        System.out.println(Arrays.toString(data1));
         // 校验数据
-        if (CRCUtil.checkCRC(data) == 0){
-                    int datasize = data[2];
-                    byte[] receivedData = new byte[datasize];
-                    System.arraycopy(data, 3, receivedData, 0, datasize);
-                    DataMessage message = new DataMessage();
-                    message.setData(receivedData);
-                    message.setDataSize(datasize);
-            System.out.println(Arrays.toString(message.getData()));
-        }
-
-//        BigDecimal b = new BigDecimal(-8897).multiply(new BigDecimal(0.1)).setScale(1, RoundingMode.HALF_UP);
-//        System.out.println(b.doubleValue() + "%");
-        System.out.println(Arrays.toString(OrderCreater.getWriteDataOrder(OrderCreater.Pamx,2,12,-23)));
+//        if (CRCUtil.checkCRC(data) == 0){
+//                    int datasize = data[2];
+//                    byte[] receivedData = new byte[datasize];
+//                    System.arraycopy(data, 3, receivedData, 0, datasize);
+//                    DataMessage message = new DataMessage();
+//                    message.setData(receivedData);
+//                    message.setDataSize(datasize);
+//            System.out.println(Arrays.toString(message.getData()));
+//        }
+//
+////        BigDecimal b = new BigDecimal(-8897).multiply(new BigDecimal(0.1)).setScale(1, RoundingMode.HALF_UP);
+////        System.out.println(b.doubleValue() + "%");
+//        System.out.println(Arrays.toString(OrderCreater.getWriteDataOrder(OrderCreater.Pamx,2,12,-23)));
     }
     @Test
     public void test3(){
