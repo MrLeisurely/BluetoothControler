@@ -23,44 +23,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/imgB"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@mipmap/bluetooth"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/txBluetooth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:drawableLeft="@drawable/ic_bluetooth_black_24dp"
                     android:drawablePadding="5dp"
                     android:text="@string/app_status_unconnected"
                     android:textColor="@color/base_black"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/txDeviceStatus"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txDeviceStatus" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imgB"
+                    app:layout_constraintStart_toEndOf="@+id/imgB"
+                    app:layout_constraintTop_toTopOf="@+id/imgB"
+                    app:layout_constraintVertical_bias="0.333" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/txDeviceStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
-                    android:text="@string/app_status_device_status"
-                    android:textColor="@color/base_black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imgStatusIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@mipmap/device"
+                    app:layout_constraintBottom_toBottomOf="@+id/txBluetooth"
                     app:layout_constraintEnd_toStartOf="@+id/imgStatusIcon"
-                    app:layout_constraintHorizontal_bias="0.921"
-                    app:layout_constraintStart_toEndOf="@+id/txBluetooth"
-                    app:layout_constraintTop_toTopOf="@+id/imgStatusIcon"
+                    app:layout_constraintTop_toTopOf="@+id/txBluetooth"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <ImageView
                     android:id="@+id/imgStatusIcon"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginEnd="25dp"
-                    android:src="@drawable/circle_red"
+                    android:src="@mipmap/red"
+                    app:layout_constraintBottom_toBottomOf="@+id/txDeviceStatus"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/txDeviceStatus" />
 
                 <LinearLayout
                     android:id="@+id/llPvs"
@@ -119,60 +124,108 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/llPvs">
 
-                    <TextView
-                        android:id="@+id/tvPV1Status"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/app_status_unrecoverd"
-                        android:textColor="@color/base_black"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tvPV2Status"
-                        android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tvPV1Status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/app_status_unrecoverd"
+                            android:textColor="@color/base_black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvPV2Status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/app_status_unrecoverd"
+                            android:textColor="@color/base_black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvPV3Status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/app_status_unrecoverd"
+                            android:textColor="@color/base_black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvPV4Status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/app_status_unrecoverd"
+                            android:textColor="@color/base_black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/app_status_unrecoverd"
-                        android:textColor="@color/base_black"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tvPV3Status"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/app_status_unrecoverd"
-                        android:textColor="@color/base_black"
-                        android:textSize="14sp" />
+                        <ImageView
+                            android:id="@+id/imgPV1Status"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:src="@mipmap/todo_re" />
 
-                    <TextView
-                        android:id="@+id/tvPV4Status"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/app_status_unrecoverd"
-                        android:textColor="@color/base_black"
-                        android:textSize="14sp" />
+                        <ImageView
+                            android:id="@+id/imgPV2Status"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:src="@mipmap/todo_re" />
 
+                        <ImageView
+                            android:id="@+id/imgPV3Status"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:src="@mipmap/todo_re" />
+
+                        <ImageView
+                            android:id="@+id/imgPV4Status"
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:src="@mipmap/todo_re" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/llStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/llPvstatus">
 
@@ -189,7 +242,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/app_status_before_recover"
-                            android:textColor="@color/base_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="16sp" />
 
                         <TextView
@@ -197,7 +250,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="@string/app_status_remark"
+                            android:text=""
                             android:textColor="@color/base_black"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -316,7 +369,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/app_status_after_recover"
-                            android:textColor="@color/base_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="16sp" />
 
                         <TextView
@@ -324,7 +377,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="@string/app_status_remark"
+                            android:text=""
                             android:textColor="@color/base_black"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -443,7 +496,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/app_status_recover_result"
-                            android:textColor="@color/base_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="16sp" />
 
                         <TextView
@@ -451,7 +504,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="@string/app_status_remark"
+                            android:text=""
                             android:textColor="@color/base_black"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -559,62 +612,62 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp">
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@string/app_status_recover_rules"
                             android:textColor="@color/base_black"
-                            android:textSize="14sp"
-                            android:text="@string/app_status_recover_rules" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvDefault"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:padding="5dp"
                             android:layout_height="35dp"
-                            android:textColor="@color/base_white"
-                            android:textSize="14sp"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:text="@string/app_status_default"
-                            android:background="@drawable/app_shape_btn_bg"
                             android:layout_marginStart="5dp"
-                            android:drawablePadding="3dp" />
+                            android:layout_weight="1"
+                            android:background="@drawable/app_shape_btn_bg"
+                            android:drawablePadding="3dp"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="@string/app_status_default"
+                            android:textAllCaps="false"
+                            android:textColor="@color/base_white"
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvPVModel"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:padding="5dp"
                             android:layout_height="35dp"
-                            android:textColor="@color/base_white"
-                            android:textSize="14sp"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:text="PV1"
-                            android:background="@drawable/app_shape_btn_bg"
                             android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/app_shape_btn_bg"
                             android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
-                            android:drawablePadding="3dp" />
+                            android:drawablePadding="3dp"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="PV1"
+                            android:textAllCaps="false"
+                            android:textColor="@color/base_white"
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvStop"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:padding="5dp"
                             android:layout_height="35dp"
-                            android:textColor="@color/base_white"
-                            android:textSize="14sp"
-                            android:gravity="center"
-                            android:textAllCaps="false"
-                            android:text="Stop"
-                            android:background="@drawable/app_shape_btn_bg"
                             android:layout_marginStart="5dp"
-                            android:drawablePadding="3dp" />
+                            android:layout_weight="1"
+                            android:background="@drawable/app_shape_btn_bg"
+                            android:drawablePadding="3dp"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Stop"
+                            android:textAllCaps="false"
+                            android:textColor="@color/base_white"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                 </LinearLayout>

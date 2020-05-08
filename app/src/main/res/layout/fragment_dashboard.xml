@@ -47,7 +47,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="Items"
-                            android:textColor="@color/base_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="16sp" />
 
                         <TextView
@@ -56,7 +56,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Value"
-                            android:textColor="@color/base_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -336,26 +336,24 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/app_shape_black_btn_bg"
-                    android:src="@drawable/ic_refresh_black_24dp"
+                    android:src="@mipmap/refresh"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/llStatus" />
 
                 <ImageView
                     android:id="@+id/imgEdit"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/app_shape_black_btn_bg"
-                    android:src="@drawable/ic_edit_black_24dp"
+                    android:src="@mipmap/write"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/llStatus" />

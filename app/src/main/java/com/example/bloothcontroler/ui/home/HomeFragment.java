@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ import com.example.bloothcontroler.service.BluetoothDataIOServer;
 import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.service.OrderCreater;
 import com.example.bloothcontroler.ui.BluetoothActivity;
+import com.example.bloothcontroler.ui.dialog.MssageDialog;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.math.BigDecimal;
@@ -47,6 +49,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
         homeViewModel.startCover(OrderCreater.readStatus(),2000);
+//        setPVStatus(binding.tvPV2Status,2,binding.imgPV2Status);
+//        setDeviceStatus(0x0100);
         return binding.getRoot();
     }
 
@@ -60,10 +64,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     int[] data = message.getData();
                     if (data.length > 16){
                         setDeviceStatus(data[0]);
-                        setPVStatus(binding.tvPV1Status,data[1]);
-                        setPVStatus(binding.tvPV2Status,data[2]);
-                        setPVStatus(binding.tvPV3Status,data[3]);
-                        setPVStatus(binding.tvPV4Status,data[4]);
+                        setPVStatus(binding.tvPV1Status,data[1],binding.imgPV1Status);
+                        setPVStatus(binding.tvPV2Status,data[2],binding.imgPV2Status);
+                        setPVStatus(binding.tvPV3Status,data[3],binding.imgPV3Status);
+                        setPVStatus(binding.tvPV4Status,data[4],binding.imgPV4Status);
                         setPVValue("PV1 VS PV2：",binding.tvBefore1,data[5]);
                         setPVValue("PV2 VS PV3：",binding.tvBefore2,data[6]);
                         setPVValue("PV3 VS PV4：",binding.tvBefore3,data[7]);
@@ -108,16 +112,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void setPVStatus(TextView pv, int status){
+    private void setPVStatus(TextView pv, int status, ImageView img){
         if (isAdded()){
             if (status == 0x0000){
                 pv.setText(getString(R.string.app_status_unrecoverd));
+                img.setImageResource(R.mipmap.todo_re);
             }
             else if (status == 0x0001){
                 pv.setText(getString(R.string.app_status_recovering));
+                img.setImageResource(R.mipmap.recoverying);
             }
             else if (status == 0x0002){
                 pv.setText(getString(R.string.app_status_recoverd));
+                img.setImageResource(R.mipmap.recovered);
             }
         }
     }
@@ -132,17 +139,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void setDeviceStatus(int status){
         if (isAdded()){
             if (status == 0x0000){
-                binding.imgStatusIcon.setImageResource(R.drawable.circle_red);
+                binding.imgStatusIcon.setImageResource(R.mipmap.red);
             }
             else if (status == 0x0100){
-                binding.imgStatusIcon.setImageResource(R.drawable.circle_green);
+                binding.imgStatusIcon.setImageResource(R.mipmap.green);
             }
             else if (status >= 0x0001 && status <= 0x0010){
-                binding.imgStatusIcon.setImageResource(R.drawable.circle_yellow);
+                binding.imgStatusIcon.setImageResource(R.mipmap.yellow);
+                bugCode = status < 10?"000" + status:"00" + status;
             }
+            isInbug = status >= 0x0001 && status <= 0x0010;
         }
 
     }
+
+    private boolean isInbug = false;
+    private String bugCode = "";
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -151,6 +163,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding.tvDefault.setOnClickListener(this);
         binding.tvPVModel.setOnClickListener(this);
         binding.tvStop.setOnClickListener(this);
+        binding.imgStatusIcon.setOnClickListener(this);
     }
 
     private boolean isStart;
@@ -179,9 +192,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    private void showMsgDialog(String msg){
+        MssageDialog dialog = MssageDialog.getInstance(msg);
+        dialog.show(getChildFragmentManager(),"msg");
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.imgStatusIcon:
+                if (isInbug){
+                    showMsgDialog(bugCode);
+                }
+                break;
             case R.id.tvDefault:
                 homeViewModel.sendOrder(OrderCreater.setDefault());
                 break;
