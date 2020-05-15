@@ -35,6 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.ChooseDeviceActivity"
+            android:theme="@style/MyDialog"/>
 
         <service android:name=".le.BluetoothLeService" android:enabled="true"/>
     </application>

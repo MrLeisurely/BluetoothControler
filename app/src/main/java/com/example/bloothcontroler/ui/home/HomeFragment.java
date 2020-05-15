@@ -27,6 +27,7 @@ import com.example.bloothcontroler.service.BluetoothDataIOServer;
 import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.service.OrderCreater;
 import com.example.bloothcontroler.ui.BluetoothActivity;
+import com.example.bloothcontroler.ui.ChooseDeviceActivity;
 import com.example.bloothcontroler.ui.dialog.MssageDialog;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -223,7 +224,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.txBluetooth:
 //                Intent intent = new Intent(getContext(), BluetoothActivity.class);
-                Intent intent = new Intent(getContext(), DeviceScanActivity.class);
+//                Intent intent = new Intent(getContext(), DeviceScanActivity.class);
+                Intent intent = new Intent(getContext(), ChooseDeviceActivity.class);
                 startActivity(intent);
                 break;
         }
