@@ -30,6 +30,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:text="Base Information"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -50,17 +51,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:background="@color/base_item_bg_green"
+                        android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
+                            android:layout_weight="1"
                             android:text="Items"
                             android:textColor="@color/base_blue"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -69,16 +71,9 @@
                             android:gravity="start"
                             android:text="Value"
                             android:textColor="@color/base_blue"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:gravity="start"
-                            android:text="Unit"
-                            android:textColor="@color/base_blue"
-                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <FrameLayout
@@ -101,31 +96,36 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="Voc of String"
+                                    android:text="Voc of String(V)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <TextView
                                     android:id="@+id/tvVoc"
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="start|center_vertical"
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
-
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_weight="2"
-                                    android:gravity="start|center_vertical"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:text="V"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@color/base_white"
+                                   />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -138,31 +138,35 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="Irradiation"
+                                    android:text="Irradiation(W/m2)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <TextView
                                     android:id="@+id/tvIrr"
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="start|center_vertical"
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
-
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_weight="2"
-                                    android:gravity="start|center_vertical"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:text="W/m2"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@color/base_white"
+                                    />
                             </LinearLayout>
 
                             <LinearLayout
@@ -175,31 +179,36 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="Temperation"
+                                    android:text="Temperation(℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <TextView
                                     android:id="@+id/tvTemp"
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="start|center_vertical"
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
-
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_weight="2"
-                                    android:gravity="start|center_vertical"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:text="℃"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg_bottom"
+                                    />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -208,7 +217,7 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:layout_gravity="center_vertical|end"
-                            android:layout_marginEnd="15dp"
+                            android:layout_marginEnd="25dp"
                             android:src="@mipmap/refresh" />
                     </FrameLayout>
 
@@ -232,32 +241,37 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="T of Pm"
+                                    android:text="T of Pm(%/℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <EditText
                                     android:id="@+id/edPm"
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="start|center_vertical"
                                     android:inputType="numberDecimal"
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_weight="2"
-                                    android:gravity="start|center_vertical"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:text="%/℃"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@color/base_white"
+                                    />
                             </LinearLayout>
 
                             <LinearLayout
@@ -270,32 +284,37 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="T of Voc"
+                                    android:text="T of Voc(%/℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <EditText
                                     android:id="@+id/edVoc"
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="start|center_vertical"
                                     android:inputType="numberDecimal"
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
-
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_weight="2"
-                                    android:gravity="start|center_vertical"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:text="%/℃"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@color/base_white"
+                                    />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -308,32 +327,37 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="T of Isc"
+                                    android:text="T of Isc(%/℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
 
                                 <EditText
                                     android:id="@+id/edIsc"
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="start|center_vertical"
                                     android:inputType="numberDecimal"
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
-
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_height="40dp"
-                                    android:layout_weight="2"
-                                    android:gravity="start|center_vertical"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
                                     android:maxLength="30"
                                     android:maxLines="1"
-                                    android:text="%/℃"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:padding="5dp"
+                                    android:background="@drawable/shape_tab_tv_bg_bottom"
+                                    />
+
                             </LinearLayout>
                         </LinearLayout>
 
@@ -342,18 +366,34 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:layout_gravity="center_vertical|end"
-                            android:layout_marginEnd="15dp"
+                            android:layout_marginEnd="25dp"
                             android:src="@mipmap/write" />
                     </FrameLayout>
                 </LinearLayout>
-
+                <TextView
+                    android:id="@+id/text_tv_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="PV Module Test"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@+id/llStatus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                   />
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/llStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/text_tv_model"
+                    android:background="@color/base_item_bg_green"
                     app:tabIndicatorColor="@color/colorPrimary"
                     app:tabIndicatorFullWidth="false"
                     app:tabIndicatorHeight="2dp"

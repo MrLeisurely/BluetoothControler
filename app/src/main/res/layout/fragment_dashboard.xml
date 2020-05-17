@@ -38,7 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:background="@color/base_item_bg_green"
+                        android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -48,7 +48,8 @@
                             android:layout_weight="2"
                             android:text="Items"
                             android:textColor="@color/base_blue"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="0dp"
@@ -57,14 +58,15 @@
                             android:gravity="center"
                             android:text="Value"
                             android:textColor="@color/base_blue"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -72,26 +74,30 @@
                             android:layout_weight="2"
                             android:text="Pamx(W)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edPamx"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                       >
 
                         <TextView
                             android:layout_width="0dp"
@@ -99,26 +105,30 @@
                             android:layout_weight="2"
                             android:text="Vmp(V)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edVmp"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -126,26 +136,30 @@
                             android:layout_weight="2"
                             android:text="Imp(A)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edImp"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -153,26 +167,30 @@
                             android:layout_weight="2"
                             android:text="Voc(V)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edVoc"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -180,26 +198,30 @@
                             android:layout_weight="2"
                             android:text="Isc(A)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edIsc"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -207,12 +229,14 @@
                             android:layout_weight="2"
                             android:text="Type"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <TextView
                             android:id="@+id/tvType"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp_1"
                             android:gravity="center"
@@ -220,14 +244,16 @@
                             android:maxLines="1"
                             android:text="@{model.mType,default = Poly}"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -235,12 +261,14 @@
                             android:layout_weight="2"
                             android:text="Glass"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <TextView
                             android:id="@+id/tvGlass"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp_1"
                             android:gravity="center"
@@ -248,14 +276,16 @@
                             android:maxLines="1"
                             android:text="@{model.mGlass,default = Single}"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -263,26 +293,30 @@
                             android:layout_weight="2"
                             android:text="Cells(PCS)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edCells"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -290,26 +324,30 @@
                             android:layout_weight="2"
                             android:text="Years(y)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edYear"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -317,19 +355,23 @@
                             android:layout_weight="2"
                             android:text="Moduls/String(PCS)"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
 
                         <EditText
                             android:id="@+id/edModuls"
                             android:layout_width="0dp"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:inputType="numberDecimal"
                             android:maxLength="30"
                             android:maxLines="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                 </LinearLayout>

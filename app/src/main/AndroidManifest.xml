@@ -37,6 +37,7 @@
         </activity>
         <activity android:name=".ui.ChooseDeviceActivity"
             android:theme="@style/MyDialog"/>
+        <activity android:name=".ui.ActivityDebug" />
 
         <service android:name=".le.BluetoothLeService" android:enabled="true"/>
     </application>

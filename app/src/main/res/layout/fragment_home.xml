@@ -233,7 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:background="@color/base_item_bg_green"
+                        android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -243,6 +243,7 @@
                             android:layout_weight="2"
                             android:text="@string/app_status_before_recover"
                             android:textColor="@color/base_blue"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -259,17 +260,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV1 VS PV2："
+                            android:textColor="@color/base_black"
+                            android:background="@drawable/shape_tab_tv_bg"
+                            android:textSize="16sp"
+                            android:padding="5dp"/>
                         <TextView
                             android:id="@+id/tvBefore1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV1 VS PV2："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -277,24 +288,36 @@
                             android:gravity="center"
                             android:text="A1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV2 VS PV3："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvBefore2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV2 VS PV3："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -302,24 +325,37 @@
                             android:gravity="center"
                             android:text="A2"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV3 VS PV4："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvBefore3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV3 VS PV4："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -327,24 +363,36 @@
                             android:gravity="center"
                             android:text="A3"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV4 VS PV1："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvBefore4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV4 VS PV1："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -352,15 +400,17 @@
                             android:gravity="center"
                             android:text="A4"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/base_item_bg_green"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -369,6 +419,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:text="@string/app_status_after_recover"
+                            android:textStyle="bold"
                             android:textColor="@color/base_blue"
                             android:textSize="16sp" />
 
@@ -386,17 +437,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV1 VS PV2："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV1 VS PV2："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -404,24 +465,37 @@
                             android:gravity="center"
                             android:text="B1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV2 VS PV3："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV2 VS PV3："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -429,24 +503,37 @@
                             android:gravity="center"
                             android:text="B2"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV3 VS PV4："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV3 VS PV4："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -454,24 +541,37 @@
                             android:gravity="center"
                             android:text="B3"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV4 VS PV1："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV4 VS PV1："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -479,15 +579,17 @@
                             android:gravity="center"
                             android:text="B4"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/base_item_bg_green"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
 
@@ -497,6 +599,7 @@
                             android:layout_weight="2"
                             android:text="@string/app_status_recover_result"
                             android:textColor="@color/base_blue"
+                            android:textStyle="bold"
                             android:textSize="16sp" />
 
                         <TextView
@@ -513,17 +616,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV1："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV1："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -531,24 +645,37 @@
                             android:gravity="center"
                             android:text="B1-A1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV2："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV2："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -556,24 +683,37 @@
                             android:gravity="center"
                             android:text="B2-A2"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                       >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV3："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV3："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -581,24 +721,37 @@
                             android:gravity="center"
                             android:text="B3-A3"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:padding="5dp">
+                        >
 
+                        <TextView
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PV4："
+                            android:textColor="@color/base_black"
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:text="PV4："
+                            android:layout_weight="1"
+                            android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
-
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -606,7 +759,9 @@
                             android:gravity="center"
                             android:text="B4-A4"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:padding="5dp"
+                            android:background="@drawable/shape_tab_tv_bg_bottom"/>
                     </LinearLayout>
 
                     <LinearLayout

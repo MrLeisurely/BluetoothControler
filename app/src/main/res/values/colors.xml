@@ -8,5 +8,6 @@
     <color name="base_white">#FFFFFF</color>
     <color name="base_item_bg_green">#E6E6E6</color>
     <color name="base_blue">#2EA7E0</color>
+    <color name="base_blue_40">#662EA7E0</color>
     <color name="transparent">#00000000</color>
 </resources>

@@ -133,7 +133,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private void setPVValue(String str,TextView pv,int value){
         if (isAdded()){
             BigDecimal b = new BigDecimal(value).multiply(new BigDecimal(0.1)).setScale(1, RoundingMode.HALF_UP);
-            pv.setText(str + b.doubleValue() + "%");
+//            pv.setText(str + b.doubleValue() + "%");
+            pv.setText(b.doubleValue() + "%");
         }
     }
 
