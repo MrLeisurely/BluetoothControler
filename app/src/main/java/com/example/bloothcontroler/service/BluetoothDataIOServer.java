@@ -153,6 +153,14 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         postValue(message);
                     }
                 }
+                else if (pageTag == DataMessage.PAGE_DEBUG){
+                    int datasize = data[2];
+                    byte[] receivedData = new byte[datasize];
+                    System.arraycopy(data, 3, receivedData, 0, datasize);
+                    message.setData(receivedData);
+                    message.what = DataMessage.RECEVED_DEBUG_DATA;
+                    postValue(message);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -245,14 +253,34 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         e.printStackTrace();
                     }
                     isDealingOrder = false;
-                    if (cacheOrder != null){
-                        sendOrder(cacheOrder,true);
-                        cacheOrder = null;
-                    }
+//                    if (cacheOrder != null){
+//                        sendOrder(cacheOrder,true);
+//                        cacheOrder = null;
+//                    }
+                    onDataRecv(create(10));
                 }
             }).start();
 
         }
+    }
+
+    private byte[] create(int datanum){
+        byte[] order = new byte[3 + datanum * 2];
+        order[0] = 0x01;//从机地址 默认0x01
+        order[1] = 0x04;
+        order[2] = (byte) (datanum * 2);
+        int[] nums = new int[datanum];
+
+        for (int i = 0;i< datanum;i++){
+            int num1 = (int) (100 * Math.random());
+            nums[i] = num1;
+            byte highRA = (byte) ((num1 & 0xFF00) >> 8);
+            byte lowRA = (byte) (num1 & 0x00FF);
+            order[3 + 2*i] = highRA;
+            order[3 + 2*i + 1] = lowRA;
+        }
+        System.out.println(Arrays.toString(nums));
+        return OrderCreater.getOrder(order);
     }
 
     private void setConnected(boolean isConnected){

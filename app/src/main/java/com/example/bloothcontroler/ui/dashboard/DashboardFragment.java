@@ -70,6 +70,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                         binding.edCells.setText(String.valueOf(data[7]));
                         binding.edYear.setText(String.valueOf(dashboardViewModel.getValue(data[8])));
                         binding.edModuls.setText(String.valueOf(data[9]));
+                        showMsg("Successful!");
                     }
                     break;
             }
@@ -93,12 +94,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.imageView:
                 if (dashboardViewModel.isBTConnected()){
                     dashboardViewModel.sendOrder(OrderCreater.generalReadOrder(OrderCreater.Pamx,10));
+
                 }
                 break;
             case R.id.imgEdit:
                 if (dashboardViewModel.isBTConnected()){
                     if (checkDataOK()){
                         dashboardViewModel.sendOrder(editOrder);
+                        showMsg("Successful!");
                     }
                 }
                 break;

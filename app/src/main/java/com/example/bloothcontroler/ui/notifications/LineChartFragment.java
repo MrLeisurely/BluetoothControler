@@ -111,8 +111,8 @@ public class LineChartFragment extends LazyFragment {
         if (null != message) {
             if (message.what == index) {
                     int[] data = message.getData();
-                    tvPmax.setText(getString(R.string.pmax_str,viewModel.getValue(data[0])));
-                    tvDiff.setText(getString(R.string.difference,viewModel.getValue(data[1])+ "%") );
+                    tvPmax.setText(getString(R.string.pmax_str,viewModel.getValueStr(data[0])));
+                    tvDiff.setText(getString(R.string.difference,viewModel.getValueStr(data[1])));
                     setPVData(data);
             }
         }

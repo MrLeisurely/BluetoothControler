@@ -25,8 +25,8 @@
     <string name="show_devices">查询配对设备</string>
     <string name="find_devices">搜索设备</string>
     <string name="connect_devices">连接设备</string>
-    <string name="pmax_str">Pmax_str(W):%1$d</string>
-    <string name="difference">Difference(%):%1$s</string>
+    <string name="pmax_str">Pmax_str(W):%1$s</string>
+    <string name="difference">Difference(%%):%1$s%%</string>
 
     <string name="ble_not_supported">您的设备不支持BLE</string>
     <string name="label_data">Data:</string>

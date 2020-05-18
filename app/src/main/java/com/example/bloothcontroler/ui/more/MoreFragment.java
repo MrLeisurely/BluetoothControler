@@ -20,6 +20,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bloothcontroler.R;
 import com.example.bloothcontroler.databinding.FragmentMoreBinding;
+import com.example.bloothcontroler.service.BluetoothDataIOServer;
+import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.ui.ActivityDebug;
 import com.example.bloothcontroler.ui.ChooseDeviceActivity;
 import com.example.bloothcontroler.ui.ScreenUtil;
@@ -71,8 +73,15 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         dialog.setListener(new MssageDialog.onPasscheckListener() {
             @Override
             public void onPassCheckOk() {
-                Intent intent = new Intent(getContext(), ActivityDebug.class);
-                startActivity(intent);
+                BluetoothDataIOServer server = BluetoothDataIOServer.getInstance();
+//                if (server.isConnected()){
+                    server.setPageTag(DataMessage.PAGE_DEBUG);
+                    Intent intent = new Intent(getContext(), ActivityDebug.class);
+                    startActivity(intent);
+//                } else {
+//                    showMsg(getString(R.string.app_device_hint));
+//                }
+
             }
 
             @Override
@@ -81,6 +90,15 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
             }
         });
         dialog.show(getChildFragmentManager(),"pass");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BluetoothDataIOServer server = BluetoothDataIOServer.getInstance();
+        if (server.isConnected()){
+            server.setPageTag(DataMessage.PAGE_MORE);
+        }
     }
 
     @Override

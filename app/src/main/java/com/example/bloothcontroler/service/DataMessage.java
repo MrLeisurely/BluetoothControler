@@ -18,11 +18,13 @@ public class DataMessage {
     public static final int RECEVED_IV_PV2_DATA = 6;
     public static final int RECEVED_IV_PV3_DATA = 7;
     public static final int RECEVED_IV_PV4_DATA = 8;
+    public static final int RECEVED_DEBUG_DATA = 9;
 
     public static final int PAGE_STATUS = 5;
     public static final int PAGE_SETTING = 6;
     public static final int PAGE_IV = 7;
     public static final int PAGE_MORE = 8;
+    public static final int PAGE_DEBUG = 9;
 
     public int what;
     private byte[] data;

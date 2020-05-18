@@ -109,6 +109,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvVocs1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -119,6 +120,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVocs2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -129,6 +131,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVocs3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -139,6 +142,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVocs4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -165,6 +169,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvIscs1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -175,6 +180,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIscs2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -185,6 +191,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIscs3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -195,6 +202,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIscs4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -222,6 +230,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvIrrs1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -232,6 +241,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIrrs2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -242,6 +252,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIrrs3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -252,6 +263,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIrrs4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -278,6 +290,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvTemps1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -288,6 +301,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvTemps2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -298,6 +312,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvTemps3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -308,6 +323,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvTemps4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -334,6 +350,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvVmps1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -344,6 +361,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVmps2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -354,6 +372,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVmps3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -364,6 +383,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVmps4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -390,6 +410,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvImps1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -400,6 +421,7 @@
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
                         <TextView
+                            android:id="@+id/tvImps2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -410,6 +432,7 @@
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
                         <TextView
+                            android:id="@+id/tvImps3"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -420,6 +443,7 @@
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
                         <TextView
+                            android:id="@+id/tvImps4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -456,6 +480,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvVbus"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -478,6 +503,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIscstc"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -506,6 +532,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvIO"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -528,6 +555,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVkp"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -556,6 +584,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvVki"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -578,6 +607,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvIki"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -606,6 +636,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvVbuslkp"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -628,6 +659,7 @@
                             android:background="@drawable/shape_tab_tv_bg" />
 
                         <TextView
+                            android:id="@+id/tvVbuslki"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -656,6 +688,7 @@
                             android:padding="5dp" />
 
                         <TextView
+                            android:id="@+id/tvVbuslki2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

@@ -11,6 +11,7 @@ import java.util.Calendar;
 public class OrderCreater {
 
     public static final byte READ = 0x04;
+    public static final byte DEBUG = 0x05;
     public static final byte WRITE = 0x10;
 
     /**
@@ -141,6 +142,10 @@ public class OrderCreater {
         return getOrder(order);
     }
 
+    public static byte[] debugOrder(){
+        return generalReadOrder(DEBUG,DEVICE_STATUS,33);
+    }
+
     /**
      * 通用读指令
      * @param registerAddress
@@ -148,9 +153,19 @@ public class OrderCreater {
      * @return
      */
     public static byte[] generalReadOrder(int registerAddress, int registerNum){
+        return generalReadOrder(READ,registerAddress,registerNum);
+    }
+
+    /**
+     * 通用读指令
+     * @param registerAddress
+     * @param registerNum
+     * @return
+     */
+    public static byte[] generalReadOrder(byte funType,int registerAddress, int registerNum){
         byte[] order = new byte[6];
         order[0] = 0x01;//从机地址 默认0x01
-        order[1] = READ;
+        order[1] = funType;
         byte highRA = (byte) ((registerAddress & 0xFF00) >> 8);
         byte lowRA = (byte) (registerAddress & 0x00FF);
         order[2] = highRA;

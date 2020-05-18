@@ -92,6 +92,10 @@ public abstract class BaseBCViewModel extends ViewModel {
         return getValue(data,0.1);
     }
 
+    public String getValueStr(int data){
+        return String.valueOf(getValue(data));
+    }
+
     public double getValue(int data,double rate){
         BigDecimal b = new BigDecimal(data).multiply(new BigDecimal(rate)).setScale(1, RoundingMode.HALF_UP);
         return b.doubleValue();

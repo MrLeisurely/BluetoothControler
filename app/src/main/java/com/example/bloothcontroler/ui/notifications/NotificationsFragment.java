@@ -26,6 +26,8 @@ import com.example.bloothcontroler.R;
 import com.example.bloothcontroler.databinding.FragmentNotificationsBinding;
 import com.example.bloothcontroler.databinding.FragmentNotificationsBinding;
 import com.example.bloothcontroler.service.DataMessage;
+import com.example.bloothcontroler.ui.widget.FontTabItem;
+import com.example.bloothcontroler.ui.widget.YWLoadingDialog;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ public class NotificationsFragment extends Fragment {
     private int currentIndex = 0;
     private List<Fragment> fragmentList = new ArrayList<>();
     private FragmentNotificationsBinding binding;
-
+    private YWLoadingDialog dialog;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +67,14 @@ public class NotificationsFragment extends Fragment {
     private void handleMessage(DataMessage message) {
         if (null != message) {
             switch (message.what) {
+                case DataMessage.RECEVED_IV_PV1_DATA:
+                case DataMessage.RECEVED_IV_PV2_DATA:
+                case DataMessage.RECEVED_IV_PV3_DATA:
+                case DataMessage.RECEVED_IV_PV4_DATA:
+                    if (dialog.isShowing()){
+                        dialog.dismiss();
+                    }
+                    break;
                 case DataMessage.RECEVED_IV_DATA:
                     int[] data = message.getData();
                     if (data.length > 5) {
@@ -76,6 +86,7 @@ public class NotificationsFragment extends Fragment {
                         binding.edIsc.setText(String.valueOf(notificationsViewModel.getValue(data[5], 0.01)));
                     }
                     break;
+
             }
         }
     }
@@ -83,6 +94,7 @@ public class NotificationsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        dialog = new YWLoadingDialog(getContext());
         binding.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,25 +142,62 @@ public class NotificationsFragment extends Fragment {
                 index = DataMessage.RECEVED_IV_PV4_DATA;
             }
             fragmentList.add(LineChartFragment.getInstance(titles[i],index));
+            String title = titles[i];
+            TabLayout.Tab tab = binding.tabLayout.newTab();
+            FontTabItem tv_title = new FontTabItem(getContext());
+            if (i==0){
+                tv_title.checked();
+            } else {
+                tv_title.unCheck();
+            }
+            tv_title.setTitle(title);
+            tab.setCustomView(tv_title);
+            binding.tabLayout.addTab(tab);
         }
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getContext(), fragmentList, getChildFragmentManager());
         binding.viewPager.setAdapter(pagerAdapter);
-        for (String title : titles) {
-            binding.tabLayout.addTab(binding.tabLayout.newTab().setText(title));
-        }
+//        for (String title : titles) {
+//            binding.tabLayout.addTab(binding.tabLayout.newTab().setText(title));
+//        }
 
-        binding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout));
+        binding.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                TabLayout.Tab tab = binding.tabLayout.getTabAt(position);
+                if (null!=tab)
+                    tab.select();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 binding.viewPager.setCurrentItem(tab.getPosition());
                 currentIndex = tab.getPosition();
                 notificationsViewModel.sendOrder(OrderCreater.getPVData(tab.getPosition()));
+                dialog.show();
+
+                FontTabItem cu = (FontTabItem) tab.getCustomView();
+                if (null!=cu){
+                    cu.checked();
+                }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
+                FontTabItem cu = (FontTabItem) tab.getCustomView();
+                if (null!=cu){
+                    cu.unCheck();
+                }
             }
 
             @Override

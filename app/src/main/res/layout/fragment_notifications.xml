@@ -396,7 +396,7 @@
                     android:background="@color/base_item_bg_green"
                     app:tabIndicatorColor="@color/colorPrimary"
                     app:tabIndicatorFullWidth="false"
-                    app:tabIndicatorHeight="2dp"
+                    app:tabIndicatorHeight="0dp"
                     app:tabRippleColor="@android:color/transparent"
                     app:tabSelectedTextColor="@color/colorPrimary"
                     app:tabTextColor="@color/base_black">

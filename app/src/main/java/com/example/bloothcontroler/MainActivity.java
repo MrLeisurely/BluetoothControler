@@ -40,30 +40,34 @@ public class MainActivity extends AppCompatActivity {
                 switch (destination.getId()){
                     case R.id.navigation_home:
                         Log.w("MainActivity","navigation_status");
+                        server.setPageTag(DataMessage.PAGE_STATUS);
                         if (server.isConnected()){
-                            server.setPageTag(DataMessage.PAGE_STATUS);
+
                         }
                         break;
                     case R.id.navigation_dashboard:
                         Log.w("MainActivity","navigation_setting");
+                        server.setPageTag(DataMessage.PAGE_SETTING);
                         if (server.isConnected()){
-                            server.setPageTag(DataMessage.PAGE_SETTING);
+
                         } else {
                             showMsg(getString(R.string.app_device_hint));
                         }
                         break;
                     case R.id.navigation_notifications:
                         Log.w("MainActivity","navigation_iv");
+                        server.setPageTag(DataMessage.PAGE_IV);
                         if (server.isConnected()){
-                            server.setPageTag(DataMessage.PAGE_IV);
+
                         } else {
                             showMsg(getString(R.string.app_device_hint));
                         }
                         break;
                     case R.id.navigation_more:
                         Log.w("MainActivity","navigation_more");
+                        server.setPageTag(DataMessage.PAGE_MORE);
                         if (server.isConnected()){
-                            server.setPageTag(DataMessage.PAGE_MORE);
+
                         }
                         break;
 
