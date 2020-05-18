@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Hanwenhao
@@ -88,12 +90,28 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                 if (orderAddress != lastOrderAddress || orderType != lastOrderType){
                     return;
                 }
+
+                int datasize = data[2];
+                byte[] receivedData = new byte[datasize];
+                System.arraycopy(data, 3, receivedData, 0, datasize);
+                if (isDealingSplitOrder){
+                    recvData.add(receivedData);
+                    if (splitIndex == splitOrders.size() - 1){
+                        isDealingSplitOrder = false;
+                        message.setData(getRecvData());
+                        recvData.clear();
+                        splitOrders.clear();
+                    } else {
+                        splitIndex ++;
+                        sendOrder(splitOrders.get(splitIndex),false,true);
+                        return;
+                    }
+                } else {
+                    message.setData(receivedData);
+                }
+
                 if (pageTag == DataMessage.PAGE_STATUS){
                     if (lastRegAddress == OrderCreater.DEVICE_STATUS){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
                         message.what = DataMessage.RECEVED_STATUS_DATA;
                         postValue(message);
                     }
@@ -103,61 +121,33 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                 }
                 else if (pageTag == DataMessage.PAGE_SETTING){
                     if (lastRegAddress == OrderCreater.Pamx){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
                         message.what = DataMessage.RECEVED_SETTING_DATA;
                         postValue(message);
                     }
                 }
                 else if (pageTag == DataMessage.PAGE_IV){
                     if (lastRegAddress == OrderCreater.Voc_of_String){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
                         message.what = DataMessage.RECEVED_IV_DATA;
                         postValue(message);
                     }
-                    else if (lastRegAddress == OrderCreater.PV1_Pmax_stc){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
-                        message.what = DataMessage.RECEVED_IV_PV1_DATA;
-                        postValue(message);
-                    }
-                    else if (lastRegAddress == OrderCreater.PV2_Pmax_stc){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
-                        message.what = DataMessage.RECEVED_IV_PV2_DATA;
-                        postValue(message);
-                    }
-                    else if (lastRegAddress == OrderCreater.PV3_Pmax_stc){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
-                        message.what = DataMessage.RECEVED_IV_PV3_DATA;
-                        postValue(message);
-                    }
-                    else if (lastRegAddress == OrderCreater.PV4_Pmax_stc){
-                        int datasize = data[2];
-                        byte[] receivedData = new byte[datasize];
-                        System.arraycopy(data, 3, receivedData, 0, datasize);
-                        message.setData(receivedData);
-                        message.what = DataMessage.RECEVED_IV_PV4_DATA;
-                        postValue(message);
-                    }
+                }
+                else if (pageTag == DataMessage.PAGE_IV_PV1_DATA){
+                    message.what = DataMessage.RECEVED_IV_PV1_DATA;
+                    postValue(message);
+                }
+                else if (pageTag == DataMessage.PAGE_IV_PV2_DATA){
+                    message.what = DataMessage.RECEVED_IV_PV2_DATA;
+                    postValue(message);
+                }
+                else if (pageTag == DataMessage.PAGE_IV_PV3_DATA){
+                    message.what = DataMessage.RECEVED_IV_PV3_DATA;
+                    postValue(message);
+                }
+                else if (pageTag == DataMessage.PAGE_IV_PV4_DATA){
+                    message.what = DataMessage.RECEVED_IV_PV4_DATA;
+                    postValue(message);
                 }
                 else if (pageTag == DataMessage.PAGE_DEBUG){
-                    int datasize = data[2];
-                    byte[] receivedData = new byte[datasize];
-                    System.arraycopy(data, 3, receivedData, 0, datasize);
-                    message.setData(receivedData);
                     message.what = DataMessage.RECEVED_DEBUG_DATA;
                     postValue(message);
                 }
@@ -208,22 +198,59 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     private boolean isDealingOrder;
     private byte[] cacheOrder;
 
+    private List<byte[]> splitOrders = new ArrayList<>();
+    private List<byte[]> recvData = new ArrayList<>();
+    private int splitIndex;
+    private boolean isDealingSplitOrder;
+
+    private byte[] getRecvData(){
+        List<Byte> resultdata = new ArrayList<>();
+        if (null != recvData && recvData.size() > 0){
+            for (int i = 0; i < recvData.size(); i++) {
+                byte[] data = recvData.get(i);
+                for (int j = 0; j < data.length; j++) {
+                    resultdata.add(data[j]);
+                }
+            }
+        }
+        byte[] result = new byte[resultdata.size()];
+        for (int i = 0; i < resultdata.size(); i++) {
+            result[i] = resultdata.get(i);
+        }
+        return result;
+    }
+
+    public void sendSplitOrder(List<byte[]> splitOrders){
+        if (!isDealingSplitOrder && null!=splitOrders && splitOrders.size() > 0){
+            this.splitOrders = splitOrders;
+            isDealingSplitOrder = true;
+            splitIndex = 0;
+            sendOrder(splitOrders.get(0),false,true);
+        }
+    }
+
     /**
      * 发送控制指令，1秒内只会发送一条，带缓存功能，目前最多缓存一条指令
      * @param order 待发送指令
      * @param needCache 标记是否需要缓存此条指令
      */
-    public synchronized void sendOrder(byte[] order,boolean needCache){
+    public synchronized void sendOrder(byte[] order,boolean needCache,boolean isSplit){
         if (order != null){
-            Log.d(TAG,"sendOrder,isDealingOrder = "+isDealingOrder);
-            if (isDealingOrder){
-                if (needCache){
-                    cacheOrder = order;
+            if (isSplit){
+                Log.d(TAG,"sendSplitOrder,splitNum = "+splitIndex);
+            } else {
+                Log.d(TAG,"sendOrder,isDealingOrder = "+isDealingOrder);
+                if (isDealingOrder){
+                    if (needCache){
+                        cacheOrder = order;
+                    }
+                    return;
                 }
-                return;
+                isDealingOrder = true;
             }
+
             Log.d(TAG,"order = "+ Arrays.toString(order));
-            isDealingOrder = true;
+
             if (order.length > 4){
                 int high = (order[2] & 0xFF) << 8;
                 int low = order[3];

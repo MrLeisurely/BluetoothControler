@@ -96,9 +96,9 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         BluetoothDataIOServer server = BluetoothDataIOServer.getInstance();
-        if (server.isConnected()){
+//        if (server.isConnected()){
             server.setPageTag(DataMessage.PAGE_MORE);
-        }
+//        }
     }
 
     @Override

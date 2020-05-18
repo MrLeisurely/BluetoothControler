@@ -25,6 +25,10 @@ public class DataMessage {
     public static final int PAGE_IV = 7;
     public static final int PAGE_MORE = 8;
     public static final int PAGE_DEBUG = 9;
+    public static final int PAGE_IV_PV1_DATA = 10;
+    public static final int PAGE_IV_PV2_DATA = 11;
+    public static final int PAGE_IV_PV3_DATA = 12;
+    public static final int PAGE_IV_PV4_DATA = 13;
 
     public int what;
     private byte[] data;

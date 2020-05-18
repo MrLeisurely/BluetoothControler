@@ -11,6 +11,7 @@ import com.example.bloothcontroler.service.DataMessage;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -43,7 +44,7 @@ public abstract class BaseBCViewModel extends ViewModel {
      */
     public void sendOrder(byte[] order){
         if (null != mText){
-            mText.sendOrder(order,true);
+            mText.sendOrder(order,true,false);
         }
     }
 
@@ -53,7 +54,19 @@ public abstract class BaseBCViewModel extends ViewModel {
      */
     public void sendUnCacheOrder(byte[] order){
         if (null != mText){
-            mText.sendOrder(order,false);
+            mText.sendOrder(order,false,false);
+        }
+    }
+
+    public void setSplitOrder(List<byte[]> splitOrders){
+        if (null != mText){
+            mText.sendSplitOrder(splitOrders);
+        }
+    }
+
+    public void setPageTag(int pageTag){
+        if (null != mText){
+            mText.setPageTag(pageTag);
         }
     }
 
@@ -87,6 +100,7 @@ public abstract class BaseBCViewModel extends ViewModel {
         }
         timer.schedule(timerTask,0,period);
     }
+
 
     public double getValue(int data){
         return getValue(data,0.1);

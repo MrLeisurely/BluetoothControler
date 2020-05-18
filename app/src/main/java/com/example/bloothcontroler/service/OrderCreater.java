@@ -1,6 +1,8 @@
 package com.example.bloothcontroler.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * @author Hanwenhao
@@ -230,6 +232,35 @@ public class OrderCreater {
             return getWriteDataOrder(START_PV3,1,3);
         }
         else return getWriteDataOrder(START_PV4,1,4);
+    }
+
+    public static List<byte[]> getSplitOrder(int pos){
+        int startAddress;
+        if (pos == 0){
+            startAddress = PV1_Pmax_stc;
+        }
+        if (pos == 1){
+            startAddress = PV2_Pmax_stc;
+        }
+        if (pos == 2){
+            startAddress = PV3_Pmax_stc;
+        }
+        else {
+            startAddress = PV4_Pmax_stc;
+        }
+        List<byte[]> result = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            int regNum;
+            int start = startAddress + 100 * i;
+            if (i <= 1){
+                regNum = 100;
+            } else {
+                regNum = 58;
+            }
+            result.add(generalReadOrder(start,regNum));
+        }
+
+        return result;
     }
 
     public static byte[] getPVData(int pos){

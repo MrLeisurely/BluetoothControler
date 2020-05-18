@@ -183,7 +183,19 @@ public class NotificationsFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 binding.viewPager.setCurrentItem(tab.getPosition());
                 currentIndex = tab.getPosition();
-                notificationsViewModel.sendOrder(OrderCreater.getPVData(tab.getPosition()));
+                notificationsViewModel.setSplitOrder(OrderCreater.getSplitOrder(tab.getPosition()));
+                if (currentIndex==0){
+                    notificationsViewModel.setPageTag(DataMessage.PAGE_IV_PV1_DATA);
+                }
+                else if (currentIndex==1){
+                    notificationsViewModel.setPageTag(DataMessage.PAGE_IV_PV2_DATA);
+                }
+                else if (currentIndex==2){
+                    notificationsViewModel.setPageTag(DataMessage.PAGE_IV_PV3_DATA);
+                }
+                else if (currentIndex==3){
+                    notificationsViewModel.setPageTag(DataMessage.PAGE_IV_PV4_DATA);
+                }
                 dialog.show();
 
                 FontTabItem cu = (FontTabItem) tab.getCustomView();
