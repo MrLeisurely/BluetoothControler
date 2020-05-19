@@ -92,14 +92,18 @@ public abstract class BaseBCViewModel extends ViewModel {
 
     private Timer timer;
     private byte[] order;
-
+    private boolean hasStarted;
     public void startCover(byte[] order,long period){
         this.order = order;
         if (timer == null){
             timer = new Timer();
         }
-        timer.schedule(timerTask,0,period);
+        if (!hasStarted){
+            hasStarted = true;
+            timer.schedule(timerTask,0,period);
+        }
     }
+
 
 
     public double getValue(int data){
