@@ -4,18 +4,13 @@ import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothSocket;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.tencent.bugly.crashreport.CrashReport;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -98,7 +93,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     recvData.add(receivedData);
                     if (splitIndex == splitOrders.size() - 1){
                         isDealingSplitOrder = false;
-                        message.setData(getRecvData());
+                        message.setData(getMergeData());
                         recvData.clear();
                         splitOrders.clear();
                     } else {
@@ -157,6 +152,12 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
         }
     }
 
+    private void onRcvTimeout(){
+        DataMessage message = new DataMessage();
+        message.what = DataMessage.RECEVED_OVER_TIME;
+        postValue(message);
+    }
+
     public void disConnect(){
         if (mBluetoothGatt != null){
             try {
@@ -202,30 +203,48 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     private List<byte[]> recvData = new ArrayList<>();
     private int splitIndex;
     private boolean isDealingSplitOrder;
+    private static long SPLIT_TIME_OUT = 5000;
 
-    private byte[] getRecvData(){
-        List<Byte> resultdata = new ArrayList<>();
+    private byte[] getMergeData(){
+        List<Byte> resultData = new ArrayList<>();
         if (null != recvData && recvData.size() > 0){
             for (int i = 0; i < recvData.size(); i++) {
                 byte[] data = recvData.get(i);
                 for (int j = 0; j < data.length; j++) {
-                    resultdata.add(data[j]);
+                    resultData.add(data[j]);
                 }
             }
         }
-        byte[] result = new byte[resultdata.size()];
-        for (int i = 0; i < resultdata.size(); i++) {
-            result[i] = resultdata.get(i);
+        byte[] result = new byte[resultData.size()];
+        for (int i = 0; i < resultData.size(); i++) {
+            result[i] = resultData.get(i);
         }
         return result;
     }
 
-    public void sendSplitOrder(List<byte[]> splitOrders){
-        if (!isDealingSplitOrder && null!=splitOrders && splitOrders.size() > 0){
-            this.splitOrders = splitOrders;
+    public void sendSplitOrder(List<byte[]> orders){
+        if (!isDealingSplitOrder && null!=orders && orders.size() > 0){
+            this.splitOrders = orders;
             isDealingSplitOrder = true;
             splitIndex = 0;
-            sendOrder(splitOrders.get(0),false,true);
+            sendOrder(orders.get(0),false,true);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(SPLIT_TIME_OUT);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (isDealingSplitOrder){
+                        onRcvTimeout();
+                        isDealingSplitOrder = false;
+                        splitIndex = 0;
+                        splitOrders.clear();
+                        recvData.clear();
+                    }
+                }
+            }).start();
         }
     }
 
@@ -280,11 +299,11 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         e.printStackTrace();
                     }
                     isDealingOrder = false;
-//                    if (cacheOrder != null){
-//                        sendOrder(cacheOrder,true);
-//                        cacheOrder = null;
-//                    }
-                    onDataRecv(create(10));
+                    if (cacheOrder != null){
+                        sendOrder(cacheOrder,true,false);
+                        cacheOrder = null;
+                    }
+//                    onDataRecv(create(10));
                 }
             }).start();
 

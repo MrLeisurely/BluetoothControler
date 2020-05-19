@@ -71,6 +71,7 @@ public class NotificationsFragment extends Fragment {
                 case DataMessage.RECEVED_IV_PV2_DATA:
                 case DataMessage.RECEVED_IV_PV3_DATA:
                 case DataMessage.RECEVED_IV_PV4_DATA:
+                case DataMessage.RECEVED_OVER_TIME:
                     if (dialog.isShowing()){
                         dialog.dismiss();
                     }
@@ -145,14 +146,14 @@ public class NotificationsFragment extends Fragment {
             String title = titles[i];
             TabLayout.Tab tab = binding.tabLayout.newTab();
             FontTabItem tv_title = new FontTabItem(getContext());
-            if (i==0){
-                tv_title.checked();
-            } else {
+//            if (i==0){
+//                tv_title.checked();
+//            } else {
                 tv_title.unCheck();
-            }
+//            }
             tv_title.setTitle(title);
             tab.setCustomView(tv_title);
-            binding.tabLayout.addTab(tab);
+            binding.tabLayout.addTab(tab,false);
         }
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getContext(), fragmentList, getChildFragmentManager());
         binding.viewPager.setAdapter(pagerAdapter);
@@ -183,7 +184,7 @@ public class NotificationsFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 binding.viewPager.setCurrentItem(tab.getPosition());
                 currentIndex = tab.getPosition();
-                notificationsViewModel.setSplitOrder(OrderCreater.getSplitOrder(tab.getPosition()));
+
                 if (currentIndex==0){
                     notificationsViewModel.setPageTag(DataMessage.PAGE_IV_PV1_DATA);
                 }
@@ -196,12 +197,18 @@ public class NotificationsFragment extends Fragment {
                 else if (currentIndex==3){
                     notificationsViewModel.setPageTag(DataMessage.PAGE_IV_PV4_DATA);
                 }
-                dialog.show();
 
                 FontTabItem cu = (FontTabItem) tab.getCustomView();
                 if (null!=cu){
                     cu.checked();
                 }
+                if (notificationsViewModel.isBTConnected()){
+                    notificationsViewModel.setSplitOrder(OrderCreater.getSplitOrder(tab.getPosition()));
+                    dialog.show();
+                } else {
+                    showMsg(getString(R.string.app_device_hint));
+                }
+
             }
 
             @Override
