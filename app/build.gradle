@@ -7,8 +7,8 @@ android {
         applicationId "com.example.bloothcontroler"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 10000003
-        versionName "1.0.3"
+        versionCode 10000004
+        versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

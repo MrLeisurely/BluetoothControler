@@ -41,7 +41,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/base_black"
                             android:background="@drawable/shape_tab_tv_bg"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp" />
 
                         <TextView
@@ -52,7 +52,7 @@
                             android:textStyle="bold"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -64,7 +64,7 @@
                             android:textStyle="bold"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -76,7 +76,7 @@
                             android:textStyle="bold"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -88,7 +88,7 @@
                             android:textStyle="bold"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -115,7 +115,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -126,7 +126,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -137,7 +137,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -148,7 +148,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -175,7 +175,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -186,7 +186,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -197,7 +197,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -208,7 +208,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -236,7 +236,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -247,7 +247,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -258,7 +258,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -269,7 +269,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -296,7 +296,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -307,7 +307,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -318,7 +318,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -329,7 +329,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -356,7 +356,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -367,7 +367,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -378,7 +378,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -389,7 +389,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -416,7 +416,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
@@ -427,7 +427,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
@@ -438,7 +438,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
@@ -449,7 +449,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -486,7 +486,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -509,7 +509,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -538,7 +538,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -561,7 +561,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -590,7 +590,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -613,7 +613,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -642,7 +642,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -665,7 +665,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -694,7 +694,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -716,7 +716,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -744,7 +744,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -766,7 +766,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -794,7 +794,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -816,7 +816,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -844,7 +844,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -866,7 +866,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -894,7 +894,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg" />
 
@@ -916,7 +916,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_bottom" />
                     </LinearLayout>
@@ -944,7 +944,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             android:background="@drawable/shape_tab_tv_bg_end" />
 
@@ -966,7 +966,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:padding="5dp"
                             />
                     </LinearLayout>
@@ -987,7 +987,7 @@
                     android:text="Back"
                     android:textAllCaps="true"
                     android:textColor="@color/base_blue"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
