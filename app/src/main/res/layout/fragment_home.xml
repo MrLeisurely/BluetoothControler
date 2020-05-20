@@ -19,53 +19,70 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imgB"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@mipmap/bluetooth"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txBluetooth"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="5dp"
-                    android:text="@string/app_status_unconnected"
-                    android:textColor="@color/base_black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imgB"
-                    app:layout_constraintStart_toEndOf="@+id/imgB"
-                    app:layout_constraintTop_toTopOf="@+id/imgB"
-                    app:layout_constraintVertical_bias="0.333" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp">
+                    <ImageView
+                        android:id="@+id/imgB"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@mipmap/bluetooth"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/txDeviceStatus"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@mipmap/device"
-                    app:layout_constraintBottom_toBottomOf="@+id/txBluetooth"
-                    app:layout_constraintEnd_toStartOf="@+id/imgStatusIcon"
-                    app:layout_constraintTop_toTopOf="@+id/txBluetooth"
-                    app:layout_constraintVertical_bias="1.0" />
+                    <TextView
+                        android:id="@+id/txBluetooth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:text="@string/app_status_unconnected"
+                        android:textColor="@color/base_black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgB"
+                        app:layout_constraintStart_toEndOf="@+id/imgB"
+                        app:layout_constraintTop_toTopOf="@+id/imgB"
+                        app:layout_constraintVertical_bias="0.333" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                    <ImageView
+                        android:id="@+id/txDeviceStatus"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@mipmap/device"
+                        app:layout_constraintBottom_toBottomOf="@+id/txBluetooth"
+                        app:layout_constraintEnd_toStartOf="@+id/imgStatusIcon"
+                        app:layout_constraintTop_toTopOf="@+id/txBluetooth"
+                        app:layout_constraintVertical_bias="1.0" />
 
-                <ImageView
-                    android:id="@+id/imgStatusIcon"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="25dp"
-                    android:src="@mipmap/red"
-                    app:layout_constraintBottom_toBottomOf="@+id/txDeviceStatus"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/txDeviceStatus" />
+                    <ImageView
+                        android:id="@+id/imgStatusIcon"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginEnd="25dp"
+                        android:src="@mipmap/red"
+                        app:layout_constraintBottom_toBottomOf="@+id/txDeviceStatus"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txDeviceStatus" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/base_item_bg_grey">
+
 
                 <LinearLayout
                     android:id="@+id/llPvs"
@@ -85,6 +102,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="PV1"
+                        android:textStyle="bold"
                         android:textColor="@color/base_black"
                         android:textSize="16sp" />
 
@@ -94,6 +112,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="PV2"
+                        android:textStyle="bold"
                         android:textColor="@color/base_black"
                         android:textSize="16sp" />
 
@@ -103,6 +122,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="PV3"
+                        android:textStyle="bold"
                         android:textColor="@color/base_black"
                         android:textSize="16sp" />
 
@@ -112,6 +132,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="PV4"
+                        android:textStyle="bold"
                         android:textColor="@color/base_black"
                         android:textSize="16sp" />
 
@@ -124,6 +145,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -217,12 +239,12 @@
                             android:src="@mipmap/todo_re" />
                     </LinearLayout>
                 </LinearLayout>
-
+            </LinearLayout>
                 <LinearLayout
                     android:id="@+id/llStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -232,7 +254,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
@@ -241,6 +263,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
+                            android:paddingStart="15dp"
                             android:text="@string/app_status_before_recover"
                             android:textColor="@color/base_blue"
                             android:textStyle="bold"
@@ -265,12 +288,13 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV1 VS PV2："
                             android:textColor="@color/base_black"
                             android:background="@drawable/shape_tab_tv_bg"
                             android:textSize="14sp"
-                            android:padding="5dp"/>
+                            android:padding="5dp"
+                            android:paddingStart="20dp"/>
                         <TextView
                             android:id="@+id/tvBefore1"
                             android:layout_width="0dp"
@@ -302,11 +326,12 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV2 VS PV3："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvBefore2"
@@ -340,11 +365,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV3 VS PV4："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvBefore3"
@@ -377,11 +403,12 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV4 VS PV1："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvBefore4"
@@ -409,7 +436,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
@@ -420,6 +447,7 @@
                             android:layout_weight="2"
                             android:text="@string/app_status_after_recover"
                             android:textStyle="bold"
+                            android:paddingStart="15dp"
                             android:textColor="@color/base_blue"
                             android:textSize="16sp" />
 
@@ -442,11 +470,12 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV1 VS PV2："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter1"
@@ -480,11 +509,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV2 VS PV3："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter2"
@@ -518,11 +548,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV3 VS PV4："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter3"
@@ -556,11 +587,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV4 VS PV1："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvAfter4"
@@ -588,7 +620,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
@@ -597,6 +629,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
+                            android:paddingStart="15dp"
                             android:text="@string/app_status_recover_result"
                             android:textColor="@color/base_blue"
                             android:textStyle="bold"
@@ -622,11 +655,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV1："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult1"
@@ -660,11 +694,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV2："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult2"
@@ -698,11 +733,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV3："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult3"
@@ -736,11 +772,12 @@
 
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.2"
                             android:text="PV4："
                             android:textColor="@color/base_black"
                             android:textSize="14sp"
                             android:padding="5dp"
+                            android:paddingStart="20dp"
                             android:background="@drawable/shape_tab_tv_bg"/>
                         <TextView
                             android:id="@+id/tvResult4"
@@ -767,8 +804,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="5dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -776,7 +814,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/app_status_recover_rules"
                             android:textColor="@color/base_black"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:paddingStart="20dp"/>
 
                         <TextView
                             android:id="@+id/tvDefault"
@@ -784,7 +823,7 @@
                             android:layout_height="35dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/app_shape_btn_bg"
+                            android:background="@drawable/selector_btn_bg"
                             android:drawablePadding="3dp"
                             android:gravity="center"
                             android:padding="5dp"
@@ -799,7 +838,7 @@
                             android:layout_height="35dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/app_shape_btn_bg"
+                            android:background="@drawable/selector_btn_bg"
                             android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
                             android:drawablePadding="3dp"
                             android:gravity="center"
@@ -815,7 +854,7 @@
                             android:layout_height="35dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/app_shape_btn_bg"
+                            android:background="@drawable/selector_btn_bg"
                             android:drawablePadding="3dp"
                             android:gravity="center"
                             android:padding="5dp"
@@ -827,7 +866,7 @@
 
                 </LinearLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

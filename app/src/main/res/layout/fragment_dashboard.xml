@@ -37,7 +37,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="50dp"
                         android:background="@drawable/shape_item_title_bg"
                         android:orientation="horizontal"
                         android:padding="5dp">
@@ -384,6 +384,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:src="@mipmap/refresh"
+                    android:background="@drawable/selector_img_btn_bg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/llStatus" />
@@ -396,6 +397,7 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:src="@mipmap/write"
+                    android:background="@drawable/selector_img_btn_bg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/llStatus" />

@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:layout_marginEnd="5dp"
+                android:paddingStart="15dp"
                 android:text="Pmax_str(W):"
                 android:textColor="@color/base_black"
                 android:textSize="16sp" />
@@ -31,6 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:paddingStart="15dp"
                 android:text="Difference(%):"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/base_black"
