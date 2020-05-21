@@ -34,6 +34,7 @@
                     android:id="@+id/tvMatchNum"
                     android:text="Connected Device:"
                     android:layout_width="wrap_content"
+                    android:textSize="14sp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/base_white" />
 
@@ -48,6 +49,7 @@
                     android:text="Available Devices:"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:textColor="@color/base_white" />
 
@@ -67,14 +69,14 @@
 
             <ImageView
                 android:id="@+id/imgDelete"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@mipmap/delete" />
 
             <CheckBox
                 android:id="@+id/cbSearch"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:checked="false"
                 android:background="@drawable/search_bg"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BluetoothControler</string>
+    <string name="app_name">Solarise</string>
     <string name="title_status">Status</string>
     <string name="title_setting">Setting</string>
     <string name="title_iv">IV</string>

@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -22,14 +22,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bloothcontroler.R;
 import com.example.bloothcontroler.databinding.FragmentHomeBinding;
-import com.example.bloothcontroler.le.DeviceScanActivity;
-import com.example.bloothcontroler.service.BluetoothDataIOServer;
 import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.service.OrderCreater;
-import com.example.bloothcontroler.ui.BluetoothActivity;
 import com.example.bloothcontroler.ui.ChooseDeviceActivity;
 import com.example.bloothcontroler.ui.dialog.MssageDialog;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -166,6 +162,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         binding.tvPVModel.setOnClickListener(this);
         binding.tvStop.setOnClickListener(this);
         binding.imgStatusIcon.setOnClickListener(this);
+        binding.imgB.setOnClickListener(this);
     }
 
     private boolean isStart;
@@ -223,6 +220,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     binding.tvStop.setText("Start");
                 }
                 break;
+            case R.id.imgB:
             case R.id.txBluetooth:
 //                Intent intent = new Intent(getContext(), BluetoothActivity.class);
 //                Intent intent = new Intent(getContext(), DeviceScanActivity.class);

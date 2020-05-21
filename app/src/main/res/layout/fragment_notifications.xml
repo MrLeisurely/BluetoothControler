@@ -32,7 +32,7 @@
                     android:text="Base Information"
                     android:textStyle="bold"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -60,8 +60,8 @@
                             android:layout_weight="1"
                             android:text="Items"
                             android:textColor="@color/base_blue"
-                            android:textSize="16sp"
-                            android:paddingStart="15dp"
+                            android:textSize="14sp"
+                            android:paddingStart="14dp"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -71,7 +71,7 @@
                             android:gravity="start"
                             android:text="Value"
                             android:textColor="@color/base_blue"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold"/>
 
                     </LinearLayout>
@@ -98,7 +98,7 @@
                                     android:layout_weight="2"
                                     android:text="Voc of String(V)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:paddingStart="20dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
@@ -112,7 +112,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
@@ -122,7 +122,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@color/base_white"
                                    />
@@ -139,9 +139,9 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:text="Irradiation(W/m2)"
+                                    android:text="Irradiation(W/m²)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:paddingStart="20dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
@@ -155,7 +155,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
@@ -165,7 +165,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@color/base_white"
                                     />
@@ -183,7 +183,7 @@
                                     android:layout_weight="2"
                                     android:text="Temperation(℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:paddingStart="20dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
@@ -197,7 +197,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
@@ -207,7 +207,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg_bottom"
                                     />
@@ -217,11 +217,11 @@
 
                         <ImageView
                             android:id="@+id/imgRefresh"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center_vertical|end"
                             android:background="@drawable/selector_img_btn_bg"
-                            android:layout_marginEnd="25dp"
+                            android:layout_marginEnd="30dp"
                             android:src="@mipmap/refresh" />
                     </FrameLayout>
 
@@ -247,7 +247,7 @@
                                     android:layout_weight="2"
                                     android:text="T of Pm(%/℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:paddingStart="20dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
@@ -262,7 +262,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
 
@@ -273,7 +273,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@color/base_white"
                                     />
@@ -291,7 +291,7 @@
                                     android:layout_weight="2"
                                     android:text="T of Voc(%/℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:paddingStart="20dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
@@ -306,7 +306,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
@@ -316,7 +316,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@color/base_white"
                                     />
@@ -335,7 +335,7 @@
                                     android:layout_weight="2"
                                     android:text="T of Isc(%/℃)"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:paddingStart="20dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
@@ -350,7 +350,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg"/>
                                 <TextView
@@ -360,7 +360,7 @@
                                     android:maxLength="30"
                                     android:maxLines="1"
                                     android:textColor="@color/base_black"
-                                    android:textSize="16sp"
+                                    android:textSize="14sp"
                                     android:padding="5dp"
                                     android:background="@drawable/shape_tab_tv_bg_bottom"
                                     />
@@ -370,11 +370,11 @@
 
                         <ImageView
                             android:id="@+id/imgEdit"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center_vertical|end"
                             android:background="@drawable/selector_img_btn_bg"
-                            android:layout_marginEnd="25dp"
+                            android:layout_marginEnd="30dp"
                             android:src="@mipmap/write" />
                     </FrameLayout>
                 </LinearLayout>
@@ -388,7 +388,7 @@
                     android:text="PV Module Test"
                     android:textStyle="bold"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     app:layout_constraintTop_toBottomOf="@+id/llStatus"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

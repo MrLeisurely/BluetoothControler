@@ -34,7 +34,7 @@
                         android:padding="5dp"
                         android:text="Version Information"
                         android:textColor="@color/base_black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -51,16 +51,17 @@
                             android:layout_weight="1"
                             android:text="APP Version"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/tvAppVersion"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:gravity="end"
                             android:text="V1.0.1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -77,7 +78,7 @@
                             android:layout_weight="2"
                             android:text="Device Version"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -86,7 +87,7 @@
                             android:gravity="end"
                             android:text="V2.0.1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <TextView
@@ -98,7 +99,7 @@
                         android:padding="5dp"
                         android:text="Contact Us"
                         android:textColor="@color/base_black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -115,16 +116,16 @@
                             android:layout_weight="1"
                             android:text="Company"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:gravity="end"
-                            android:text="solarup"
+                            android:text="solarise"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -141,7 +142,7 @@
                             android:layout_weight="1"
                             android:text="Website"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -150,7 +151,7 @@
                             android:gravity="end"
                             android:text="www.solarup.com"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -167,7 +168,7 @@
                             android:layout_weight="1"
                             android:text="E-mail"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -176,7 +177,7 @@
                             android:gravity="end"
                             android:text="solarup@solarup.com"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -193,7 +194,7 @@
                             android:layout_weight="1"
                             android:text="Tel."
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -202,7 +203,7 @@
                             android:gravity="end"
                             android:text="021-38934552"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <TextView
@@ -214,7 +215,7 @@
                         android:padding="5dp"
                         android:text="Update"
                         android:textColor="@color/base_black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -231,7 +232,7 @@
                             android:layout_weight="1"
                             android:text="File"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvFile"
@@ -245,7 +246,7 @@
                             android:paddingBottom="3dp"
                             android:text="···"
                             android:textColor="@color/base_white"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -258,7 +259,7 @@
                         android:padding="5dp"
                         android:text="Log Download"
                         android:textColor="@color/base_black"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -280,7 +281,7 @@
                             android:paddingBottom="3dp"
                             android:text="Start"
                             android:textColor="@color/base_white"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -288,7 +289,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textColor="@color/base_black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tvOpen"
@@ -302,7 +303,7 @@
                             android:paddingBottom="3dp"
                             android:text="Open"
                             android:textColor="@color/base_white"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -326,7 +327,7 @@
                     android:paddingBottom="3dp"
                     android:text="Debug"
                     android:textColor="@color/base_white"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
