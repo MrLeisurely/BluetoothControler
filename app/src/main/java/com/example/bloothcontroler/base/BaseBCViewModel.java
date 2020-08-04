@@ -75,7 +75,7 @@ public abstract class BaseBCViewModel extends ViewModel {
         public void run() {
             if (isReadyToSend && order.length > 0
                     && isBTConnected()
-                    && isSetTimeOK()
+//                    && isSetTimeOK()
             ){
                 Log.w(TAG,"sendCover:" + Arrays.toString(order));
                 sendUnCacheOrder(order);
