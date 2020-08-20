@@ -1,8 +1,5 @@
 package com.example.bloothcontroler.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  * @author Hanwenhao
  * @date 2020/4/13
@@ -38,7 +35,7 @@ public class DataMessage {
 
     public int[] getData() {
         int[] mdata = new int[data.length/2];
-        for (int i = 0;i < data.length;i+=2){
+        for (int i = 0;i < data.length - 1;i += 2){
             int high = (data[i] & 0x00FF) << 8;
             int low = data[i + 1] & 0x00FF;
             if (high + low >= 0x8000){

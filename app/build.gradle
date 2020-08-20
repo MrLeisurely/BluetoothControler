@@ -7,13 +7,13 @@ android {
         applicationId "com.example.bloothcontroler"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 10000005
-        versionName "1.0.1"
+        versionCode 10000006
+        versionName "1.0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro.' +
                     ''

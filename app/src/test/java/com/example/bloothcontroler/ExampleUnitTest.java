@@ -1,18 +1,12 @@
 package com.example.bloothcontroler;
 
-import android.util.Log;
-
-import com.example.bloothcontroler.service.CRCUtil;
-import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.service.OrderCreater;
 
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -83,6 +77,23 @@ public class ExampleUnitTest {
         }
         System.out.println(Arrays.toString(order));
         System.out.println(lastAddress);
+    }
+
+    @Test
+    public void testgetData(){
+        byte[] data = {0x12,0x00,0x13,0x10};
+        int[] mdata = new int[data.length/2];
+        for (int i = 0;i < data.length - 1;i += 2){
+            int high = (data[i] & 0x00FF) << 8;
+            int low = data[i + 1] & 0x00FF;
+            if (high + low >= 0x8000){
+                mdata[i/2] = high + low - 0x10000;
+            } else {
+                mdata[i/2] = high + low;
+            }
+        }
+        System.out.println(Arrays.toString(data));
+        System.out.println(Arrays.toString(mdata));
     }
 
 
