@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.bloothcontroler.R;
 import com.example.bloothcontroler.databinding.AppDialogBinding;
+import com.example.bloothcontroler.service.BluetoothDataIOServer;
 
 /**
  * @author Hanwenhao
@@ -36,6 +37,10 @@ public class MssageDialog extends DialogFragment {
                 binding.tvContent.setVisibility(View.GONE);
                 binding.llPassword.setVisibility(View.VISIBLE);
                 binding.llCancel.setVisibility(View.VISIBLE);
+                String password = BluetoothDataIOServer.getInstance().getPassword();
+                if (!TextUtils.isEmpty(password)){
+                    binding.edPassword.setText(password);
+                }
             } else {
                 String msg = bundle.getString("msg", "");
                 binding.tvContent.setText(msg);
@@ -50,9 +55,11 @@ public class MssageDialog extends DialogFragment {
                             if (TextUtils.isEmpty(password)){
                                 listener.onPassCheckFail("Please input Password");
                             } else if (PASSWORD.equals(password)) {
+                                BluetoothDataIOServer.getInstance().setPassword(password);
                                 listener.onPassCheckOk();
                                 dismiss();
                             } else {
+                                BluetoothDataIOServer.getInstance().setPassword(password);
                                 listener.onPassCheckFail("Password is wrong");
                             }
                         }

@@ -29,6 +29,10 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     private int lastOrderAddress;
     private int lastOrderType;
     private boolean setTimeOK;
+    private int currentPv;
+    private String password;
+    private int currentType;
+    private int currentGlass;
     public boolean isConnected() {
         return isConnected;
     }
@@ -42,6 +46,38 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
     }
     private BluetoothDataIOServer(){
 
+    }
+
+    public int getCurrentType() {
+        return currentType;
+    }
+
+    public void setCurrentType(int currentType) {
+        this.currentType = currentType;
+    }
+
+    public int getCurrentGlass() {
+        return currentGlass;
+    }
+
+    public void setCurrentGlass(int currentGlass) {
+        this.currentGlass = currentGlass;
+    }
+
+    public int getCurrentPv() {
+        return currentPv;
+    }
+
+    public void setCurrentPv(int currentPv) {
+        this.currentPv = currentPv;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     private static class SingleHolder{

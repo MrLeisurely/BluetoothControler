@@ -95,6 +95,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setVale(){
+        typeValue = dashboardViewModel.getIOServer().getCurrentType();
+        glassValue = dashboardViewModel.getIOServer().getCurrentGlass();
         binding.tvType.setText(typeValue == 0 ? "Poly":"Mono");
         binding.tvGlass.setText(glassValue == 0 ? "Single":"Double");
     }
@@ -137,39 +139,39 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             double cells = Double.parseDouble(binding.edCells.getText().toString());
             double years = Double.parseDouble(binding.edYear.getText().toString());
             double moduls = Double.parseDouble(binding.edModuls.getText().toString());
-            if (pamx > 1000 || pamx < 0){
-                showMsg("Pamx 取值为 0-1000W");
+            if (pamx > 10000 || pamx < 0){
+                showMsg("Pamx 取值为 0-10000");
                 return false;
             }
-            if (vmp > 110 || vmp < 0){
-                showMsg("Vmp 取值为 0-110V");
+            if (vmp > 1100 || vmp < 0){
+                showMsg("Vmp 取值为 0-1100");
                 return false;
             }
-            if (imp > 5 || imp < 0){
-                showMsg("Imp 取值为 0-5A");
+            if (imp > 50 || imp < 0){
+                showMsg("Imp 取值为 0-50");
                 return false;
             }
-            int p = (int) (pamx * 10);
-            int v = (int) (vmp * 10);
-            int i = (int) (imp * 10);
+            int p = (int) (pamx);
+            int v = (int) (vmp);
+            int i = (int) (imp);
 //            if (p * 10 !=  v * i){
 //                showMsg("Pamx != Vmp * Imp,请检查输入数据");
 //                return false;
 //            }
-            if (voc > 110 || voc < -110){
-                showMsg("Voc 取值为 +-110V");
+            if (voc > 1100 || voc < -1100){
+                showMsg("Voc 取值为 +-1100");
                 return false;
             }
-            if (isc > 5 || isc < 0){
-                showMsg("Isc 取值为 0-5A");
+            if (isc > 50 || isc < 0){
+                showMsg("Isc 取值为 0-50");
                 return false;
             }
             if (cells > 200 || cells < 0){
                 showMsg("Cells 取值为 0-200");
                 return false;
             }
-            if (years > 5 || years < 0){
-                showMsg("Year 取值为 0-5");
+            if (years > 50 || years < 0){
+                showMsg("Year 取值为 0-50");
                 return false;
             }
             if (moduls > 50 || moduls < 0){
@@ -180,12 +182,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     p,
                     v,
                     i,
-                    (int) (voc * 10),
-                    (int) (isc * 10),
+                    (int) (voc),
+                    (int) (isc),
                     typeValue,
                     glassValue,
                     (int) (cells),
-                    (int) (years * 10),
+                    (int) (years),
                     (int) (moduls)
             );
         } catch (Exception e){
@@ -226,8 +228,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (type == TYPE){
                     typeValue = position;
+                    dashboardViewModel.getIOServer().setCurrentType(position);
                 } else {
                     glassValue = position;
+                    dashboardViewModel.getIOServer().setCurrentGlass(position);
                 }
                 setVale();
                 dialog.dismiss();

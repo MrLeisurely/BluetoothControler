@@ -38,6 +38,10 @@ public abstract class BaseBCViewModel extends ViewModel {
         return mText;
     }
 
+    public BluetoothDataIOServer getIOServer(){
+        return mText;
+    }
+
     /**
      * 一般指令，指用户手动发出，默认缓存
      * @param order

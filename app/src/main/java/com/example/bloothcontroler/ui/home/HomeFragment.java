@@ -31,9 +31,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private String TAG = "HomeFragment";
+    private static final String TAG = "HomeFragment";
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private static final String[] pvModels = {"PV1","PV2","PV3","PV4"};
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -83,6 +84,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    private void setPVText(){
+        int pv = homeViewModel.getIOServer().getCurrentPv();
+        if (pv < pvModels.length && pv >= 0){
+            binding.tvPVModel.setText(pvModels[pv]);
+        }
+    }
+
     private void setConnectStatus(){
         if (homeViewModel.isBTConnected()) {
             binding.txBluetooth.setText(getString(R.string.app_status_connected));
@@ -104,6 +112,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Log.w(TAG,"onResume");
         homeViewModel.setReady(true);
         setConnectStatus();
+        setPVText();
         if (!homeViewModel.isSetTimeOK()){
             homeViewModel.sendOrder(OrderCreater.setTimeOrder());
         }
@@ -174,16 +183,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         final AlertDialog dialog = builder.show();
         ListView listView = view.findViewById(R.id.language_content_list);
 
-        final String[] languages;
 
-        languages = new String[]{"PV1","PV2","PV3","PV4"};
-
-
-        listView.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, languages));
+        listView.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, pvModels));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                binding.tvPVModel.setText(languages[position]);
+                homeViewModel.getIOServer().setCurrentPv(position);
+                setPVText();
                 homeViewModel.sendOrder(OrderCreater.startCircle(position));
                 dialog.dismiss();
             }
