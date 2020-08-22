@@ -81,7 +81,8 @@ public class ExampleUnitTest {
 
     @Test
     public void testgetData(){
-        byte[] data = {0x12,0x00,0x13,0x10};
+//        byte[] data = {0x12,0x00,0x13,0x10};
+        byte[] data = OrderCreater.generalReadOrder(OrderCreater.Pamx,10);
         int[] mdata = new int[data.length/2];
         for (int i = 0;i < data.length - 1;i += 2){
             int high = (data[i] & 0x00FF) << 8;
@@ -93,7 +94,7 @@ public class ExampleUnitTest {
             }
         }
         System.out.println(Arrays.toString(data));
-        System.out.println(Arrays.toString(mdata));
+//        System.out.println(Arrays.toString(mdata));
     }
 
 

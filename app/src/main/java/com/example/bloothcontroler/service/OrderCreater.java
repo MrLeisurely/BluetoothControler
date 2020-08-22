@@ -145,7 +145,7 @@ public class OrderCreater {
     }
 
     public static byte[] debugOrder(){
-        return generalReadOrder(DEBUG,DEVICE_STATUS,33);
+        return generalReadOrder(DEBUG,DEVICE_STATUS,44);
     }
 
     /**

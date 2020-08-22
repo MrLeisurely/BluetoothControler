@@ -89,6 +89,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        setVale();
+    }
+
+    private void setVale(){
+        binding.tvType.setText(typeValue == 0 ? "Poly":"Mono");
+        binding.tvGlass.setText(glassValue == 0 ? "Single":"Double");
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.imageView:
@@ -214,12 +225,11 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (type == TYPE){
-                    dashboardViewModel.mType.set(languages[position]);
                     typeValue = position;
                 } else {
-                    dashboardViewModel.mGlass.set(languages[position]);
                     glassValue = position;
                 }
+                setVale();
                 dialog.dismiss();
             }
         });

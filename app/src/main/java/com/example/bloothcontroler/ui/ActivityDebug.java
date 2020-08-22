@@ -1,6 +1,7 @@
 package com.example.bloothcontroler.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.example.bloothcontroler.service.OrderCreater;
 import com.example.bloothcontroler.ui.dashboard.DashboardViewModel;
 
 public class ActivityDebug extends AppCompatActivity {
+    private static final String TAG = "ActivityDebug";
     private ActivityDebugBinding binding;
     private DebugViewModel viewModel;
     @Override
@@ -36,8 +38,21 @@ public class ActivityDebug extends AppCompatActivity {
                 handleMessage(s);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG,"onResume,startCover");
         viewModel.setReady(true);
         viewModel.startCover(OrderCreater.debugOrder(),2000);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG,"onResume,stopCover");
+        viewModel.setReady(false);
     }
 
     private void handleMessage(DataMessage message) {
@@ -45,7 +60,7 @@ public class ActivityDebug extends AppCompatActivity {
             switch (message.what) {
                 case DataMessage.RECEVED_DEBUG_DATA:
                     int[] data = message.getData();
-                    if (data.length > 32){
+                    if (data.length > 43){
                         binding.tvVocs1.setText(viewModel.getValueStr(data[0]));
                         binding.tvIscs1.setText(viewModel.getValueStr(data[1]));
                         binding.tvIrrs1.setText(viewModel.getValueStr(data[2]));
@@ -79,6 +94,17 @@ public class ActivityDebug extends AppCompatActivity {
                         binding.tvVkp.setText(viewModel.getValueStr(data[30]));
                         binding.tvIki.setText(viewModel.getValueStr(data[31]));
                         binding.tvVbuslki2.setText(viewModel.getValueStr(data[32]));
+                        binding.res1.setText(viewModel.getValueStr(data[33]));
+                        binding.res2.setText(viewModel.getValueStr(data[34]));
+                        binding.res3.setText(viewModel.getValueStr(data[35]));
+                        binding.res4.setText(viewModel.getValueStr(data[36]));
+                        binding.res5.setText(viewModel.getValueStr(data[37]));
+                        binding.res6.setText(viewModel.getValueStr(data[38]));
+                        binding.res7.setText(viewModel.getValueStr(data[39]));
+                        binding.res8.setText(viewModel.getValueStr(data[40]));
+                        binding.res9.setText(viewModel.getValueStr(data[41]));
+                        binding.res10.setText(viewModel.getValueStr(data[42]));
+                        binding.res11.setText(viewModel.getValueStr(data[43]));
                     }
                     break;
             }

@@ -14,8 +14,8 @@ public class DashboardViewModel extends BaseBCViewModel {
     public ObservableField<String> mType;
     public ObservableField<String> mGlass;
     public DashboardViewModel() {
-        mType = new ObservableField<>("Poly");
-        mGlass = new ObservableField<>("Single");
+//        mType = new ObservableField<>("Poly");
+//        mGlass = new ObservableField<>("Single");
 //        mText.setValue("This is dashboard fragment");
     }
 }
