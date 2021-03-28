@@ -4,6 +4,10 @@ import com.example.bloothcontroler.service.OrderCreater;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -80,22 +84,49 @@ public class ExampleUnitTest {
     }
     @Test
     public void readFile(){
-//        String filePath = "D:\\文档\\BlueTooth\\导出\\PVRecovery_cpu2_V4.hex";
-//        try {
-//            FileReader fileInputStream = new FileReader(new File(filePath));
-//            BufferedReader bufferedInputStream = new BufferedReader(fileInputStream);
-////            byte[] buffer = new byte[1024];
-//            String line;
-//            while ((line = bufferedInputStream.readLine())!= null){
-//                System.out.println(line);
+        String filePath = "D:\\文档\\BlueTooth\\导出\\PVRecovery_cpu2_V4.hex";
+        try {
+            File file = new File(filePath);
+            System.out.println("getTotalSpace:" + file.getTotalSpace() + " getFreeSpace" + file.getFreeSpace());
+            FileReader fileInputStream = new FileReader(new File(filePath));
+            BufferedReader bufferedInputStream = new BufferedReader(fileInputStream);
+//            FileInputStream inputStream = new FileInputStream(file);
+//            BufferedInputStream bufferedInputStream1 = new BufferedInputStream(inputStream);
+//            byte[] buffer = new byte[1024];
+//            while (bufferedInputStream1.read(buffer) != -1){
+//                System.out.println(toHex(buffer));
 //            }
-//
-//            bufferedInputStream.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        String lineData = ":20000200FFFFA80000000007FFFFA80100000000FFFFA80300000000FFFFA8040000000037";
-        System.out.println(bytes2Hex(OrderCreater.createCPUHandShakeOrder(OrderCreater.CPU01)));
+//            bufferedInputStream1.close();
+            String line;
+            long sumeSize = 0;
+            while ((line = bufferedInputStream.readLine())!= null){
+                sumeSize += line.length();
+                System.out.println(toHex(createLineDataOrder(line)));
+            }
+            System.out.println("sumeSize:" + sumeSize);
+            bufferedInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        String lineData = ":20000200FFFFA80000000007FFFFA80100000000FFFFA80300000000FFFFA8040000000037";
+//        System.out.println(toHex(OrderCreater.createCPUHandShakeOrder(OrderCreater.CPU01)));
+    }
+
+    public String toHex(byte[] bytes){
+        StringBuilder builder = new StringBuilder();
+        int n = 0;
+        for (byte b:bytes){
+            if (n % 0x10 == 0){
+                builder.append(String.format("%1$05x:",n));
+            }
+            builder.append(String.format("%1$02x ",b));
+            n++;
+            if (n % 0x10 == 0){
+                builder.append("\n");
+            }
+        }
+        builder.append("\n");
+        return builder.toString().toUpperCase();
     }
 
     public static String bytes2Hex(byte[] src){
