@@ -102,7 +102,8 @@ public class OrderCreater {
 
     public static final int SET_TIME = 63000;
 
-
+    public static final byte CPU01 = 0x08;
+    public static final byte CPU02 = 0x09;
     /**
      * 添加校验位
      * @param bytes
@@ -117,6 +118,41 @@ public class OrderCreater {
         order[order.length - 2] = high;
         order[order.length - 1] = low;
         return order;
+    }
+
+    /**
+     * 根据hex文件一行数据创建数据帧
+     * @param lineData
+     * @return
+     */
+    public static byte[] createLineDataFrame(byte cpu,byte[] lineData){
+        byte[] frame = new byte[5 + 2 + 1 + lineData.length];
+        frame[0] = 0x05;
+        frame[1] = cpu;
+        frame[2] = 0x00;
+        frame[3] = 0x01;
+        frame[4] = 0x00;
+        frame[5] = (byte) ((lineData.length + 1) / 2);
+        frame[6] = (byte) (lineData.length + 1);
+        frame[7] = 0x00;
+        System.arraycopy(lineData,0,frame,5 + 2 + 1,lineData.length);
+        return getOrder(frame);
+    }
+
+    /**
+     * CPU 握手指令
+     * @param cpuIndex
+     * @return
+     */
+    public static byte[] createCPUHandShakeOrder(byte cpuIndex){
+        byte[] frame = new byte[6];
+        frame[0] = 0x05;
+        frame[1] = cpuIndex;
+        frame[2] = 0x00;
+        frame[3] = 0x00;
+        frame[4] = 0x00;
+        frame[5] = 0x00;
+        return getOrder(frame);
     }
 
     public static byte[] getWriteDataOrder(int registerAddress,int registerNum,int... writeData){

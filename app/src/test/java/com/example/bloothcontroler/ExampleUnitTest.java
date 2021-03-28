@@ -78,6 +78,69 @@ public class ExampleUnitTest {
         System.out.println(Arrays.toString(order));
         System.out.println(lastAddress);
     }
+    @Test
+    public void readFile(){
+//        String filePath = "D:\\文档\\BlueTooth\\导出\\PVRecovery_cpu2_V4.hex";
+//        try {
+//            FileReader fileInputStream = new FileReader(new File(filePath));
+//            BufferedReader bufferedInputStream = new BufferedReader(fileInputStream);
+////            byte[] buffer = new byte[1024];
+//            String line;
+//            while ((line = bufferedInputStream.readLine())!= null){
+//                System.out.println(line);
+//            }
+//
+//            bufferedInputStream.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        String lineData = ":20000200FFFFA80000000007FFFFA80100000000FFFFA80300000000FFFFA8040000000037";
+        System.out.println(bytes2Hex(OrderCreater.createCPUHandShakeOrder(OrderCreater.CPU01)));
+    }
+
+    public static String bytes2Hex(byte[] src){
+        char[] res = new char[src.length*2];
+        final char[] hexDigits ={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+        for(int i=0,j=0; i<src.length; i++){
+            res[j++] = hexDigits[src[i] >>>4 & 0x0f];
+            res[j++] = hexDigits[src[i] & 0x0f];
+        }
+        return new String(res);
+    }
+
+
+    private byte[] createLineDataOrder(String lineDataStr){
+        if (null != lineDataStr && lineDataStr.startsWith(":")){
+            String realData = lineDataStr.substring(1);
+            byte[] lineData = hex2Bytes(realData);
+            return OrderCreater.createLineDataFrame(OrderCreater.CPU01,lineData);
+        }
+        return null;
+    }
+
+    public static byte[] hex2Bytes(String src){
+        byte[] res = new byte[src.length()/2];
+        char[] chs = src.toCharArray();
+        int[] b = new int[2];
+
+        for(int i=0,c=0; i<chs.length; i+=2,c++){
+            for(int j=0; j<2; j++){
+                if(chs[i+j]>='0' && chs[i+j]<='9'){
+                    b[j] = (chs[i+j]-'0');
+                }else if(chs[i+j]>='A' && chs[i+j]<='F'){
+                    b[j] = (chs[i+j]-'A'+10);
+                }else if(chs[i+j]>='a' && chs[i+j]<='f'){
+                    b[j] = (chs[i+j]-'a'+10);
+                }
+            }
+
+            b[0] = (b[0]&0x0f)<<4;
+            b[1] = (b[1]&0x0f);
+            res[c] = (byte) (b[0] | b[1]);
+        }
+
+        return res;
+    }
 
     @Test
     public void testgetData(){
