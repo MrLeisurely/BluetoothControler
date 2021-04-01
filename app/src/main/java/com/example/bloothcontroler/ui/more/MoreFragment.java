@@ -3,6 +3,7 @@ package com.example.bloothcontroler.ui.more;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,11 @@ import com.example.bloothcontroler.service.DataMessage;
 import com.example.bloothcontroler.ui.ActivityDebug;
 import com.example.bloothcontroler.ui.ScreenUtil;
 import com.example.bloothcontroler.ui.dialog.MssageDialog;
+import com.example.bloothcontroler.ui.widget.FileSelectionFragment;
+import com.example.bloothcontroler.ui.widget.ObtainFilesAddress;
+import com.example.bloothcontroler.ui.widget.entity.Document;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Hanwenhao
@@ -108,6 +114,14 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
                 showPasswordDialog();
                 break;
             case R.id.tvFile:
+                FileSelectionFragment fragment = FileSelectionFragment.getInstance("hex");
+                fragment.setObtainFilesAddress(new ObtainFilesAddress() {
+                    @Override
+                    public void fileUrls(@NotNull Document fiels) {
+                        Log.e("FileSelection"," name:" + fiels.name + " path:" + fiels.path);
+                    }
+                });
+                fragment.show(getChildFragmentManager(),"FileSelection");
                 break;
         }
     }

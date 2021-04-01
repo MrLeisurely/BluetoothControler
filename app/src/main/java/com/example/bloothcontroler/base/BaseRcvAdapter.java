@@ -68,6 +68,10 @@ public abstract class BaseRcvAdapter<T,R extends ViewDataBinding> extends Recycl
         notifyDataSetChanged();
     }
 
+    public List<T> getData() {
+        return data;
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder{
 
         public MyViewHolder(@NonNull View itemView) {
