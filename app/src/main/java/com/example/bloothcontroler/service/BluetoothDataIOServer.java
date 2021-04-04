@@ -106,16 +106,67 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
         setConnected(true);
     }
 
+    private void onRcvCopyDataFail(DataMessage message){
+        if (currentCopyTime == copyTime){//重试次数用完
+            if (isHandShake){
+                message.what = DataMessage.HAND_SHAKE_FAIL;
+            }
+            else {
+                message.what = DataMessage.GET_COPY_DATA_FAIL;
+            }
+            Log.w(TAG,"接收copydata失败，重试次数用完");
+            postValue(message);
+            resetCopy();
+        }
+        else {
+            currentCopyTime ++;//重试计数+1
+            Log.w(TAG,"接收copydata失败，重试：" +currentCopyTime);
+            sendCopyOrder(cacheCopyOrder);
+        }
+    }
+
     /**
      * 处理接受到的数据
      * @param data
      */
-    public void onDataRecv(byte[] data){
+    public synchronized void onDataRecv(byte[] data){
         try {
             DataMessage message = new DataMessage();
             // 校验数据
             if (CRCUtil.checkCRC(data) == 0){
+                hasRcvData = true;
                 Log.w(TAG,"data check ok");
+                if (isCopy) {
+                    if (Arrays.equals(data,cacheCopyOrder)){
+                        currentCopyTime = 0;//重试次数归零
+                        if (isHandShake){
+                            if (currentHandshakeTime == handshakeTime){//达到指定握手次数
+                                currentHandshakeTime = 0;
+                                isHandShake = false;
+                                message.what = DataMessage.HAND_SHAKE_SUCCESS;
+                                postValue(message);
+                            }
+                            else {
+                                currentHandshakeTime ++;
+                                message.what = DataMessage.UPDATE_HAND_SHAKING;//更新握手次数
+                                message.setRepeatTime(currentHandshakeTime);
+                                postValue(message);
+                                sendCopyOrder(cacheCopyOrder);
+                            }
+                        }
+                        else {
+                            message.what = DataMessage.GET_COPY_DATA;//成功收到同样的回复
+                            cacheIndex ++;
+                            message.setRepeatTime(cacheIndex);
+                            Log.w(TAG,"copyData rcv:" + cacheIndex);
+                            postValue(message);
+                        }
+                    }
+                    else {
+                        onRcvCopyDataFail(message);
+                    }
+                    return;
+                }
                 int orderAddress = data[0];
                 int orderType = data[1];
                 if (orderAddress != lastOrderAddress || orderType != lastOrderType){
@@ -234,12 +285,39 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
 
     private boolean isDealingOrder;
     private byte[] cacheOrder;
+    private byte[] cacheCopyOrder;
 
     private List<byte[]> splitOrders = new ArrayList<>();
     private List<byte[]> recvData = new ArrayList<>();
     private int splitIndex;
     private boolean isDealingSplitOrder;
     private static long SPLIT_TIME_OUT = 5000;
+
+    private int copyTime = 10;//失败重试的次数
+    private int handshakeTime;//握手次数
+    private int cacheIndex;
+    private int currentCopyTime;
+    private int currentHandshakeTime;
+    private boolean isCopy;
+    private boolean isHandShake;
+
+    public void resetCacheIndex() {
+        cacheIndex = 0;
+    }
+
+    public void resetCopy(){
+        isCopy = false;
+        currentCopyTime = 0;
+        resetCacheIndex();
+    }
+
+    public void setCopyTime(int copyTime) {
+        this.copyTime = copyTime;
+    }
+
+    public void setHandshakeTime(int handshakeTime) {
+        this.handshakeTime = handshakeTime;
+    }
 
     private byte[] getMergeData(){
         List<Byte> resultData = new ArrayList<>();
@@ -284,12 +362,49 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
         }
     }
 
+
+    public void sendOrder(byte[] order,boolean needCache,boolean isSplit){
+        sendOrderImp(order,needCache,isSplit);
+    }
+
+    /**
+     * 这类指令发送后下位机会回复相同的内容
+     * @param order
+     */
+    public void sendCopyOrder(byte[] order){
+        isCopy = true;
+        cacheCopyOrder = order;
+        sendOrderImp(order,false,false);
+    }
+
+    public void sendHandShakeOrder(byte[] order){
+        isHandShake = true;
+        sendCopyOrder(order);
+    }
+
+    public String toHex(byte[] bytes){
+        StringBuilder builder = new StringBuilder();
+        int n = 0;
+        for (byte b:bytes){
+            if (n % 0x10 == 0){
+                builder.append(String.format("%1$05x:",n));
+            }
+            builder.append(String.format("%1$02x ",b));
+            n++;
+            if (n % 0x10 == 0){
+                builder.append("\n");
+            }
+        }
+        builder.append("\n");
+        return builder.toString().toUpperCase();
+    }
+
     /**
      * 发送控制指令，1秒内只会发送一条，带缓存功能，目前最多缓存一条指令
      * @param order 待发送指令
      * @param needCache 标记是否需要缓存此条指令
      */
-    public synchronized void sendOrder(byte[] order,boolean needCache,boolean isSplit){
+    private synchronized void sendOrderImp(final byte[] order, boolean needCache, boolean isSplit){
         if (order != null){
             if (isSplit){
                 Log.d(TAG,"sendSplitOrder,splitNum = "+splitIndex);
@@ -304,7 +419,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                 isDealingOrder = true;
             }
 
-            Log.d(TAG,"order = "+ Arrays.toString(order));
+            Log.w(TAG,"order = "+ toHex(order));
 
             if (order.length > 4){
                 int high = (order[2] & 0xFF) << 8;
@@ -322,15 +437,16 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     mBluetoothGatt.writeCharacteristic(mNotifyCharacteristic);
                 }
                 catch (Exception e){
-                    Log.d(TAG,"send Data error,"+e.getMessage());
+                    Log.e(TAG,"send Data error,"+e.getMessage());
                 }
             }
-
+            flagId = Math.random();
+            resetRcvDataFlag(flagId);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -339,11 +455,43 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                         sendOrder(cacheOrder,true,false);
                         cacheOrder = null;
                     }
-//                    onDataRecv(create(10));
+//                    onDataRecv(order);
+//                    onDataRecv(create(4));
                 }
             }).start();
 
         }
+    }
+
+    private class RcvHandler implements Runnable{
+        private final double localId;
+        public RcvHandler(double localId) {
+            this.localId = localId;
+        }
+
+        public double getLocalId() {
+            return localId;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (!hasRcvData && localId == flagId && isCopy){
+                onRcvCopyDataFail(new DataMessage());
+            }
+        }
+    }
+
+    private volatile boolean hasRcvData;
+    private double flagId;
+
+    private void resetRcvDataFlag(double id){
+        hasRcvData = false;
+        new Thread(new RcvHandler(id)).start();
     }
 
     private byte[] create(int datanum){

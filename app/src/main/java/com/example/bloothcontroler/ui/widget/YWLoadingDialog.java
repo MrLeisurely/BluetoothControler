@@ -66,7 +66,26 @@ public class YWLoadingDialog extends Dialog {
         setCanceledOnTouchOutside(false);
     }
 
+    @Override
+    public void dismiss() {
+        if (isShowing()){
+            tv_load.setText("");
+            super.dismiss();
+        }
+    }
 
+    public void showWithMsg(String msg){
+        if (!isShowing()){
+            show();
+            updateValue(msg);
+        }
+    }
 
+    public void updateValue(String values){
+        if (null != tv_load && null != values){
+            tv_load.setVisibility(View.VISIBLE);
+            tv_load.setText(values);
+        }
+    }
 }
 

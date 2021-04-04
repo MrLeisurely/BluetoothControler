@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         homeViewModel.getText().observe(this, new Observer<DataMessage>() {
             @Override
             public void onChanged(@Nullable DataMessage s) {
+                if (isAdded())
                 handleMessage(s);
             }
         });

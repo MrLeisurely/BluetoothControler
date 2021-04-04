@@ -43,7 +43,11 @@ public class MssageDialog extends DialogFragment {
                 }
             } else {
                 String msg = bundle.getString("msg", "");
+                String ok = bundle.getString("ok","OK");
+                String cancel = bundle.getString("cancel","Cancel");
                 binding.tvContent.setText(msg);
+                binding.btnOK.setText(ok);
+                binding.btnCancel.setText(cancel);
             }
 
             binding.btnOK.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +68,9 @@ public class MssageDialog extends DialogFragment {
                             }
                         }
                     } else {
+                        if (null != btnClickListener){
+                            btnClickListener.onOkClick();
+                        }
                         dismiss();
                     }
 
@@ -73,6 +80,9 @@ public class MssageDialog extends DialogFragment {
             binding.btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (null != btnClickListener){
+                        btnClickListener.onCancelClick();
+                    }
                     dismiss();
                 }
             });
@@ -99,17 +109,36 @@ public class MssageDialog extends DialogFragment {
     }
 
     private onPasscheckListener listener;
+    private onBtnClickListener btnClickListener;
+
+    public void setBtnClickListener(onBtnClickListener btnClickListener) {
+        this.btnClickListener = btnClickListener;
+    }
 
     public void setListener(onPasscheckListener listener) {
         this.listener = listener;
     }
 
     public static MssageDialog getInstance(String msg) {
+        return getInstance(msg,null,null);
+    }
+
+    public static MssageDialog getInstance(String msg,String ok,String cancel) {
         Bundle bundle = new Bundle();
         bundle.putString("msg", msg);
+        if (null != ok){
+            bundle.putString("ok",ok);
+        }
+        if (null != cancel){
+            bundle.putString("cancel",cancel);
+        }
         MssageDialog dialog = new MssageDialog();
         dialog.setArguments(bundle);
         return dialog;
+    }
+
+    public static MssageDialog getInstance(String msg,String ok) {
+        return getInstance(msg,ok,null);
     }
 
     public static MssageDialog getPasswordInstance() {
@@ -118,6 +147,11 @@ public class MssageDialog extends DialogFragment {
         MssageDialog dialog = new MssageDialog();
         dialog.setArguments(bundle);
         return dialog;
+    }
+
+    public interface onBtnClickListener {
+        void onOkClick();
+        void onCancelClick();
     }
 
     public interface onPasscheckListener {

@@ -17,6 +17,11 @@ public class DataMessage {
     public static final int RECEVED_IV_PV4_DATA = 8;
     public static final int RECEVED_DEBUG_DATA = 9;
     public static final int RECEVED_OVER_TIME = 10;
+    public static final int UPDATE_HAND_SHAKING = 11;
+    public static final int HAND_SHAKE_SUCCESS = 12;
+    public static final int GET_COPY_DATA = 13;
+    public static final int GET_COPY_DATA_FAIL = 14;
+    public static final int HAND_SHAKE_FAIL = 15;
 
     public static final int PAGE_STATUS = 5;
     public static final int PAGE_SETTING = 6;
@@ -32,6 +37,15 @@ public class DataMessage {
     private byte[] data;
     private int dataSize;
     private int registerAddress;
+    private int repeatTime;
+
+    public int getRepeatTime() {
+        return repeatTime;
+    }
+
+    public void setRepeatTime(int repeatTime) {
+        this.repeatTime = repeatTime;
+    }
 
     public int[] getData() {
         int[] mdata = new int[data.length/2];
