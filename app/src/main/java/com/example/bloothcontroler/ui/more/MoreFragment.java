@@ -142,9 +142,9 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
 //        if (server.isConnected()){
             server.setPageTag(DataMessage.PAGE_MORE);
 //        }
-//        if (server.isConnected()){
+        if (server.isConnected()){
             checkIfNeedRestartHandshake();
-//        }
+        }
     }
 
     private boolean restartHandShakeFlag;
