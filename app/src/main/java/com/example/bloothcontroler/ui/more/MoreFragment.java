@@ -33,6 +33,8 @@ import com.example.bloothcontroler.ui.widget.entity.Document;
 
 import org.jetbrains.annotations.NotNull;
 
+import static com.example.bloothcontroler.ui.more.MoreFragmentViewModel.DEFAULT_HANDSHAKING_TIME;
+
 /**
  * @author Hanwenhao
  * @date 2020/3/31
@@ -43,19 +45,20 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
     private MoreFragmentViewModel notificationsViewModel;
     private FragmentMoreBinding binding;
     private YWLoadingDialog processDialog;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         notificationsViewModel =
                 ViewModelProviders.of(this).get(MoreFragmentViewModel.class);
 //        View root = inflater.inflate(R.layout.fragment_more, container, false);
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_more,container,false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_more, container, false);
         binding.blank.post(new Runnable() {
             @Override
             public void run() {
                 int contenheight = binding.llContent.getHeight();
                 int screenHeight = ScreenUtil.getScreenHeight(getContext());
                 ViewGroup.LayoutParams layoutParams = binding.blank.getLayoutParams();
-                if (contenheight < screenHeight){
+                if (contenheight < screenHeight) {
                     layoutParams.height = screenHeight - contenheight;
                 }
                 binding.blank.setLayoutParams(layoutParams);
@@ -64,8 +67,8 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         notificationsViewModel.getText().observe(this, new Observer<DataMessage>() {
             @Override
             public void onChanged(DataMessage dataMessage) {
-                Log.w("BluetoothDataIOServer","getting msg:" + dataMessage.what + "," + dataMessage.getRepeatTime());
-                if (isAdded()){
+                Log.w("BluetoothDataIOServer", "getting msg:" + dataMessage.what + "," + dataMessage.getRepeatTime());
+                if (isAdded()) {
                     handleMessage(dataMessage);
                 }
             }
@@ -84,16 +87,16 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
         binding.tvAppVersion.setText("V" + BuildConfig.VERSION_NAME);
     }
 
-    private void showPasswordDialog(){
+    private void showPasswordDialog() {
         MssageDialog dialog = MssageDialog.getPasswordInstance();
         dialog.setListener(new MssageDialog.onPasscheckListener() {
             @Override
             public void onPassCheckOk() {
                 BluetoothDataIOServer server = BluetoothDataIOServer.getInstance();
 //                if (server.isConnected()){
-                    server.setPageTag(DataMessage.PAGE_DEBUG);
-                    Intent intent = new Intent(getContext(), ActivityDebug.class);
-                    startActivity(intent);
+                server.setPageTag(DataMessage.PAGE_DEBUG);
+                Intent intent = new Intent(getContext(), ActivityDebug.class);
+                startActivity(intent);
 //                } else {
 //                    showMsg(getString(R.string.app_device_hint));
 //                }
@@ -105,16 +108,16 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
                 showMsg(msg);
             }
         });
-        dialog.show(getChildFragmentManager(),"pass");
+        dialog.show(getChildFragmentManager(), "pass");
     }
 
-    private void showMsgDialog(String msg, String okBtn, final int tag){
-        MssageDialog dialog = MssageDialog.getInstance(msg,okBtn);
+    private void showMsgDialog(String msg, String okBtn, final int tag) {
+        MssageDialog dialog = MssageDialog.getInstance(msg, okBtn);
 //        dialog.setCancelable(false);
         dialog.setBtnClickListener(new MssageDialog.onBtnClickListener() {
             @Override
             public void onOkClick() {
-                if (tag == DataMessage.HAND_SHAKE_SUCCESS){
+                if (tag == DataMessage.HAND_SHAKE_SUCCESS) {
                     needRestartHandshake = true;
                     goToReconnect();
                 }
@@ -125,46 +128,47 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
 
             }
         });
-        dialog.show(getChildFragmentManager(),"message");
+        dialog.show(getChildFragmentManager(), "message");
     }
 
-    private void showMsgDialog(String msg){
-        showMsgDialog(msg,null,0);
+    private void showMsgDialog(String msg) {
+        showMsgDialog(msg, null, 0);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (null == processDialog){
+        if (null == processDialog) {
             processDialog = new YWLoadingDialog(getContext());
         }
         BluetoothDataIOServer server = BluetoothDataIOServer.getInstance();
 //        if (server.isConnected()){
-            server.setPageTag(DataMessage.PAGE_MORE);
+        server.setPageTag(DataMessage.PAGE_MORE);
 //        }
-        if (server.isConnected()){
+        if (server.isConnected()) {
             checkIfNeedRestartHandshake();
         }
     }
 
     private boolean restartHandShakeFlag;
     private boolean needRestartHandshake;
-    private void checkIfNeedRestartHandshake(){
-        if (!restartHandShakeFlag && needRestartHandshake){
+
+    private void checkIfNeedRestartHandshake() {
+        if (!restartHandShakeFlag && needRestartHandshake) {
             restartHandShakeFlag = true;
-            processDialog.showWithMsg("HandShaking");
+            processDialog.showWithMsg("HandShaking:0/" + DEFAULT_HANDSHAKING_TIME);
             notificationsViewModel.startCPUHandShaking();
         }
     }
 
-    private void handleMessage(DataMessage message){
-        if (null == processDialog){
+    private void handleMessage(DataMessage message) {
+        if (null == processDialog) {
             return;
         }
-        if (null != message){
-            switch (message.what){
+        if (null != message) {
+            switch (message.what) {
                 case DataMessage.CONNECT_STATUS:
-                    if (notificationsViewModel.getIOServer().isConnected()){
+                    if (notificationsViewModel.getIOServer().isConnected()) {
                         checkIfNeedRestartHandshake();
                     }
                     break;
@@ -174,12 +178,11 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
                     break;
                 case DataMessage.GET_COPY_DATA:
                     processDialog.updateValue("Updating:" + message.getRepeatTime() + "/" + notificationsViewModel.fileData.size());
-                    if (message.getRepeatTime() == notificationsViewModel.fileData.size()){
+                    if (message.getRepeatTime() == notificationsViewModel.fileData.size()) {
                         processDialog.dismiss();
                         showMsgDialog("更新成功");
                         notificationsViewModel.resetCopy();
-                    }
-                    else {
+                    } else {
                         notificationsViewModel.update(message.getRepeatTime());
                     }
                     break;
@@ -189,43 +192,45 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
                     break;
                 case DataMessage.HAND_SHAKE_SUCCESS:
                     processDialog.dismiss();
-                    if (needRestartHandshake){
+                    if (needRestartHandshake) {
                         needRestartHandshake = false;
                         processDialog.showWithMsg("Updating");
                         notificationsViewModel.startUpdate();
-                    }
-                    else {
-                        showMsgDialog("CPU握手完成,请等待设备重启","重启好了",DataMessage.HAND_SHAKE_SUCCESS);
+                    } else {
+                        showMsgDialog("CPU握手完成,请等待设备重启", "重启好了", DataMessage.HAND_SHAKE_SUCCESS);
                     }
                     break;
                 case DataMessage.UPDATE_HAND_SHAKING:
-                    processDialog.updateValue("HandShaking:" + message.getRepeatTime());
+                    processDialog.updateValue("HandShaking:" + message.getRepeatTime() + "/" + DEFAULT_HANDSHAKING_TIME);
+                    break;
+                case DataMessage.HAND_SHAKE_RETRY_FAIL:
+                    processDialog.updateValue("HandShaking:" + message.getRepeatTime() + "/" + DEFAULT_HANDSHAKING_TIME + " fail,retry " + message.getCurrentCopyTime());
                     break;
             }
         }
     }
 
-    private void goToReconnect(){
+    private void goToReconnect() {
         Intent intent = new Intent(getContext(), ChooseDeviceActivity.class);
         startActivity(intent);
     }
 
-    private void showUpdateDialog(String fileName, final String filePath){
+    private void showUpdateDialog(String fileName, final String filePath) {
         final UpdateDialog dialog = UpdateDialog.getInstance(fileName);
         dialog.setListener(new UpdateDialog.OnCPUChooseListener() {
             @Override
             public void onCPUChoose(byte cpuIndex) {
-                notificationsViewModel.readFile(filePath,cpuIndex);
+                notificationsViewModel.readFile(filePath, cpuIndex);
                 notificationsViewModel.startCPUHandShaking();
-                processDialog.showWithMsg("HandShaking");
+                processDialog.showWithMsg("HandShaking:0/" + DEFAULT_HANDSHAKING_TIME);
             }
         });
-        dialog.show(getChildFragmentManager(),"update");
+        dialog.show(getChildFragmentManager(), "update");
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tvStart:
                 break;
             case R.id.tvOpen:
@@ -237,18 +242,23 @@ public class MoreFragment extends Fragment implements View.OnClickListener {
                 FileSelectionFragment fragment = FileSelectionFragment.getInstance("hex");
                 fragment.setObtainFilesAddress(new ObtainFilesAddress() {
                     @Override
+                    public void onError(@NotNull String msg) {
+                        showMsgDialog(msg);
+                    }
+
+                    @Override
                     public void fileUrls(@NotNull Document fiels) {
-                        Log.e("FileSelection"," name:" + fiels.name + " path:" + fiels.path);
-                        showUpdateDialog(fiels.name,fiels.path);
+                        Log.e("FileSelection", " name:" + fiels.name + " path:" + fiels.path);
+                        showUpdateDialog(fiels.name, fiels.path);
                     }
                 });
-                fragment.show(getChildFragmentManager(),"FileSelection");
+                fragment.show(getChildFragmentManager(), "FileSelection");
                 break;
         }
     }
 
-    private void showMsg(String msg){
-        if (!TextUtils.isEmpty(msg)){
+    private void showMsg(String msg) {
+        if (!TextUtils.isEmpty(msg)) {
             Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
         }
     }

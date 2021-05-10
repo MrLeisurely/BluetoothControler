@@ -22,6 +22,7 @@ public class DataMessage {
     public static final int GET_COPY_DATA = 13;
     public static final int GET_COPY_DATA_FAIL = 14;
     public static final int HAND_SHAKE_FAIL = 15;
+    public static final int HAND_SHAKE_RETRY_FAIL = 16;
 
     public static final int PAGE_STATUS = 5;
     public static final int PAGE_SETTING = 6;
@@ -38,6 +39,15 @@ public class DataMessage {
     private int dataSize;
     private int registerAddress;
     private int repeatTime;
+    private int currentCopyTime;
+
+    public int getCurrentCopyTime() {
+        return currentCopyTime;
+    }
+
+    public void setCurrentCopyTime(int currentCopyTime) {
+        this.currentCopyTime = currentCopyTime;
+    }
 
     public int getRepeatTime() {
         return repeatTime;

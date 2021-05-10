@@ -17,8 +17,9 @@ import java.util.List;
  * @update [序号][日期YYYY-MM-DD] [更改人姓名][变更描述]
  */
 public class MoreFragmentViewModel extends BaseBCViewModel {
+    public static final int DEFAULT_HANDSHAKING_TIME = 10;
     public void startCPUHandShaking(){
-        getIOServer().setHandshakeTime(10);
+        getIOServer().setHandshakeTime(DEFAULT_HANDSHAKING_TIME);
         getIOServer().sendHandShakeOrder(OrderCreater.createCPUHandShakeOrder(cpuIndex));
     }
 

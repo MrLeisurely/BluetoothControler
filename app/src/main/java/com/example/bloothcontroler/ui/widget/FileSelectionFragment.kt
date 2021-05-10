@@ -117,17 +117,17 @@ class FileSelectionFragment : BaseBottomSheetDialogFragment<FileSelectionFragmen
 //            }
         }
 
-        if(::adapter.isInitialized)
-        {
-            adapter.onClickFileSelection = object : OnClickFileSelection {
-                override fun onClickItem(item: Document?, position: Int) {
-                    if(::obtainFilesAddress.isInitialized)
-                    {
-                        item?.let { obtainFilesAddress.fileUrls(it) }
-                    }
-                }
-            }
-        }
+//        if(::adapter.isInitialized)
+//        {
+//            adapter.onClickFileSelection = object : OnClickFileSelection {
+//                override fun onClickItem(item: Document?, position: Int) {
+//                    if(::obtainFilesAddress.isInitialized)
+//                    {
+//                        item?.let { obtainFilesAddress.fileUrls(it) }
+//                    }
+//                }
+//            }
+//        }
     }
     lateinit var obtainFilesAddress: ObtainFilesAddress
 
@@ -183,7 +183,11 @@ class FileSelectionFragment : BaseBottomSheetDialogFragment<FileSelectionFragmen
 //                Log.i(TAG, "imageId: $imageId")
                 var fileType = getFileType(displayName)
                 if (fileType == null){
-                    showMsg("Unsupported file type")
+//                    showMsg("Unsupported file type")
+                    if(::obtainFilesAddress.isInitialized) {
+//                        obtainFilesAddress.onError("Unsupported file type")
+                        obtainFilesAddress.onError("不支持的文件类型")
+                    }
                     dismiss()
                     return
                 }
@@ -247,4 +251,5 @@ class FileSelectionFragment : BaseBottomSheetDialogFragment<FileSelectionFragmen
 
 interface ObtainFilesAddress {
     fun fileUrls(fiels: Document)
+    fun onError(msg: String)
 }

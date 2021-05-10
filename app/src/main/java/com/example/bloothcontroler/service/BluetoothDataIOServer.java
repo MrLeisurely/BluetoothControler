@@ -121,6 +121,12 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
         else {
             currentCopyTime ++;//重试计数+1
             Log.w(TAG,"接收copydata失败，重试：" +currentCopyTime);
+            if (isHandShake){
+                message.setCurrentCopyTime(currentCopyTime);
+                message.setRepeatTime(currentHandshakeTime);
+                message.what = DataMessage.HAND_SHAKE_RETRY_FAIL;
+                postValue(message);
+            }
             sendCopyOrder(cacheCopyOrder);
         }
     }
@@ -140,7 +146,7 @@ public class BluetoothDataIOServer extends MutableLiveData<DataMessage> {
                     if (Arrays.equals(data,cacheCopyOrder)){
                         currentCopyTime = 0;//重试次数归零
                         if (isHandShake){
-                            if (currentHandshakeTime == handshakeTime){//达到指定握手次数
+                            if (currentHandshakeTime == handshakeTime - 1){//达到指定握手次数
                                 currentHandshakeTime = 0;
                                 isHandShake = false;
                                 message.what = DataMessage.HAND_SHAKE_SUCCESS;
